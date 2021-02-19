@@ -6,6 +6,7 @@
 body{
     --story-height: 100vh;
     --story-width: min(100vw, calc(var(--story-height) * 377 / 668));
+    background: var(--story-background);
 }
 
 h1{
@@ -30,7 +31,6 @@ h2{
 
 /* Activity */
 *[class^='story'], *[class*=' story']{
-    background: var(--story-background);
     width: var(--story-width);
     height: var(--story-height);
     margin: 0 auto;
@@ -45,7 +45,9 @@ h2{
 
 .story-activity .title,
 .story-activity .subtitle{
-    max-width: 300px;
+    width: auto;
+    left: 24px;
+    right: 24px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -53,18 +55,15 @@ h2{
 }
 
 .story-activity .title{
-    left: 24px;
-    right: 24px;
     top: 20px;
 }
 
 .story-activity .subtitle{
-    left: 24px;
     top: 60px;
 }
 
 .story-activity .grid{
-    width: auto;
+    width: calc(var(--cell-width) * 7);
     height: auto;
     margin: 0 auto;
     transform: translateY(-50%);
@@ -75,7 +74,7 @@ h2{
 }
 
 .story-activity .row{
-    width: 100%;
+    width: calc(var(--cell-width) * 7);
     margin-top: calc(var(--cell-height) * -1 + var(--cell-height) / 2.625);
     margin-left: 0;
     display: block;
@@ -100,7 +99,7 @@ h2{
 .story-activity .cell::before{
     content: '';
     width: 100%;
-    height: 100px;
+    height: calc(var(--cell-height) * 3);
     left: 0;
     bottom: 0;
     background-image: var(--cell-3d-min-image);
@@ -111,19 +110,19 @@ h2{
     position: absolute;
 }
 
-.story-activity .cell.min::before{
+.story-activity .cell.v-min::before{
     background-image: var(--cell-3d-min-image);
 }
 
-.story-activity .cell.mid::before{
+.story-activity .cell.v-mid::before{
     background-image: var(--cell-3d-mid-image);
 }
 
-.story-activity .cell.max::before{
+.story-activity .cell.v-max::before{
     background-image: var(--cell-3d-max-image);
 }
 
-.story-activity .cell.extra::before{
+.story-activity .cell.v-extra::before{
     background-image: var(--cell-3d-extra-image);
 }
 
@@ -217,4 +216,192 @@ h2{
 
 .story-activity .legend h2{
     margin-top: 8px;
+}
+
+.hide_on_vertic{
+    display: none;
+}
+
+@media screen and (orientation:landscape) {
+    .hide_on_horiz{
+        display: none;
+    }
+
+    .hide_on_vertic{
+        display: block;
+    }
+
+    body{
+        --story-width: 100vw;
+        --story-height: min(100vh, calc(var(--story-width) * 668 / 377));
+    }
+
+    .story-activity{
+        --cell-height: min(
+            calc((var(--story-height) - 176px) * 0.17),
+            calc((var(--story-width) - 48px) * 0.0685)
+        );
+        --cell-width: var(--cell-height);
+    }
+
+    .story-activity .title,
+    .story-activity .subtitle{
+        left: 52px;
+        right: 52px;
+        text-align: center;
+    }
+
+    .story-activity .legend {
+        max-width: 332px;
+        bottom: 58px;
+    }
+
+    .story-activity .legend h2 {
+        text-align: center;
+    }
+
+    .story-activity .grid {
+        width: calc(var(--cell-height) * 12.5);
+        top: calc(var(--story-height) / 2);
+    }
+
+    .story-activity .row{
+        width: var(--cell-width);
+        height: calc(var(--cell-height) * 4 * 0.765);
+        display: inline-block;
+    }
+    
+    .story-activity .row:nth-child(even){
+        display: none;
+    }
+
+    .story-activity .cell:first-child{
+        margin-top: 0;
+    }
+
+    .story-activity .cell {
+        margin-top: calc(var(--cell-height) * -0.615);
+    }
+
+    .story-activity .cell:nth-child(2n) {
+        margin-left: calc(var(--cell-width) / 2);
+    }
+
+    .story-activity .cell.h-min::before{
+        background-image: var(--cell-3d-min-image);
+    }
+    
+    .story-activity .cell.h-mid::before{
+        background-image: var(--cell-3d-mid-image);
+    }
+    
+    .story-activity .cell.h-max::before{
+        background-image: var(--cell-3d-max-image);
+    }
+    
+    .story-activity .cell.h-extra::before{
+        background-image: var(--cell-3d-extra-image);
+    }
+    
+    /* Меняем порядок наложение столбцов с слева-направо на сверху-вниз */
+    .story-activity .cell:nth-child(1) {
+        z-index: 1;
+    }
+    .story-activity .cell:nth-child(2) {
+        z-index: 2;
+    }
+    .story-activity .cell:nth-child(3) {
+        z-index: 3;
+    }
+    .story-activity .cell:nth-child(4) {
+        z-index: 4;
+    }
+    .story-activity .cell:nth-child(5) {
+        z-index: 5;
+    }
+    .story-activity .cell:nth-child(6) {
+        z-index: 6;
+    }
+    .story-activity .cell:nth-child(7) {
+        z-index: 7;
+    }
+}
+
+@media screen and (orientation:landscape) and (min-width: 900px){
+    .story-activity{
+        --cell-height: min(
+            calc((var(--story-height) - 176px) * 0.13),
+            calc((var(--story-width) - 48px) * 0.0685)
+        );
+        --cell-width: var(--cell-height);
+    }
+}
+
+@media screen and (orientation:portrait) and (min-width: 750px){
+    .story-activity{
+        --cell-width: calc((var(--story-width) - 72px) / 7.5 * 0.9);
+        --cell-height: var(--cell-width);
+    }
+}
+
+@media screen and (orientation:landscape) and (min-width: 900px),
+       screen and (orientation:portrait) and (min-width: 750px) {
+    h1 {
+        height: 48px;
+        font-size: 45px;
+        line-height: 48px;
+    }
+
+    h2 {
+        height: 27px;
+        font-size: 24px;
+        line-height: 27px;
+    }
+
+    .story-activity .title {
+        top: 25px;
+    }
+
+    .story-activity .subtitle {
+        top: 90px;
+    }
+
+    .story-activity .legend {
+        max-width: 498px;
+        bottom: 56px;
+    }
+
+    .story-activity .legend li {
+        width: 90px;
+    }
+
+    .story-activity .legend__min_cell,
+    .story-activity .legend__mid_cell,
+    .story-activity .legend__max_cell,
+    .story-activity .legend__extra_cell,
+    .story-activity .legend__step {
+        height: 18px;
+        border-radius: 3px;
+    }
+
+    .story-activity .legend__step {
+        width: calc(100% - 12px);
+        height: 6px;
+        margin: 6px;
+        margin-bottom: 12px;
+    }
+
+    .story-activity .legend__step::before,
+    .story-activity .legend__step::after {
+        width: 6px;
+        height: 18px;
+        top: -6px;
+        left: -6px;
+        border-radius: 3px;
+    }
+
+    .story-activity .legend__step::after {
+        left: auto;
+        right: -6px;
+    }
 }

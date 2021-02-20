@@ -1,28 +1,48 @@
 body,
 body.theme_dark{
-    /* background-color: #000; */
     --story-background: radial-gradient(
         70.24% 70.24% at 49.87% 29.76%,
         rgba(18, 12, 1, 0.9) 0%,
         #000000 100%
     );
-    --h1-color: #FCFBF7;
-    --h2-color: #918F8A;
+    --text-color-main: #FCFBF7;
+    --text-color-sub: #918F8A;
 }
 
 body.theme_light{
     background-color: #fff;
     --story-background: #fff;
-    --h1-color: #261C00;
-    --h2-color: #BFBFBF;
+    --text-color-main: #261C00;
+    --text-color-sub: #BFBFBF;
+}
+
+.story-leaders,
+body.theme_dark .story-leaders{
+    --box-extra-background: radial-gradient(91.67% 122.17% at 69.17% -11.17%, #FFA300 0%, #2D1C00 100%);
+    --box-min-background: linear-gradient(180deg, rgba(0, 0, 0, 0) -2.22%, rgba(0, 0, 0, 0.8) 100%), radial-gradient(149.08% 95.38% at 38.75% 71.48%, #000000 0%, #231900 0.01%, #4D4D4D 100%);
+
+    --box-extra-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.4), inset 0px 6px 15px rgba(255, 162, 0, 0.4);
+    --box-min-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.2), inset 2px 2px 16px rgba(103, 103, 103, 0.6);
+
+    --separator-background: #918F8A;
+}
+
+body.theme_light .story-leaders{
+    --box-extra-background: linear-gradient(-180deg, #FFF2D1 1%, #FFD66C 100%);
+    --box-min-background: linear-gradient(-180deg, #F4F4F4 1%, #E9E9E9 100%, #EAEAEA 100%);
+
+    --box-extra-shadow: inset 0px 0px 20px 0px #FFB039,inset -1px 1px 1px 0px #FFFFFF;
+    --box-min-shadow: inset 0px 0px 20px 0px #CFCFCF,inset -1px 1px 1px 0px #FFFFFF;
+
+    --separator-background: #261C00;
 }
 
 .story-activity,
 body.theme_dark .story-activity{    
-    --cell-3d-min-image: url("../images/cell_3d_dark_min.svg");
-    --cell-3d-mid-image: url("../images/cell_3d_dark_mid.svg");
-    --cell-3d-max-image: url("../images/cell_3d_dark_max.svg");
-    --cell-3d-extra-image: url("../images/cell_3d_dark_extra.svg");
+    --cell-3d-min-image: url("../images/min-dark.svg");
+    --cell-3d-mid-image: url("../images/mid-dark.svg");
+    --cell-3d-max-image: url("../images/max-dark.svg");
+    --cell-3d-extra-image: url("../images/extra-dark.svg");
 
     --cell-legend-min-background: radial-gradient(
         3906.1% 3815.36% at 89.06% 78.28%,
@@ -71,10 +91,10 @@ body.theme_dark .story-activity{
 }
 
 body.theme_light .story-activity{    
-    --cell-3d-min-image: url("../images/cell_3d_light_min.svg");
-    --cell-3d-mid-image: url("../images/cell_3d_light_mid.svg");
-    --cell-3d-max-image: url("../images/cell_3d_light_max.svg");
-    --cell-3d-extra-image: url("../images/cell_3d_light_extra.svg");
+    --cell-3d-min-image: url("../images/min-light.svg");
+    --cell-3d-mid-image: url("../images/mid-light.svg");
+    --cell-3d-max-image: url("../images/max-light.svg");
+    --cell-3d-extra-image: url("../images/extra-light.svg");
 
     --cell-legend-min-background: radial-gradient(
         2408.25% 2730.55% at 89.06% 78.28%,

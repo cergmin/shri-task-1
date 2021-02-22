@@ -225,6 +225,8 @@ function renderTemplate(alias, data){
     return layout;
 }
 
+window.renderTemplate = renderTemplate;
+
 window.onload = function() {
     let body = document.getElementsByTagName("body")[0];
     // body.innerHTML = renderTemplate('activity', data_activity);

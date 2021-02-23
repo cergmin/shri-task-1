@@ -1,5 +1,11 @@
+for(let i = 0; i < 5; i++){
+    let iconSizes = [16, 32, 48, 96, 128]
+    require(`./images/favicon-${iconSizes[i]}-dark.png`);
+    require(`./images/favicon-${iconSizes[i]}-light.png`);
+}
+
 for(let i = 1; i <= 12; i++){
-    require('./images/' + i + '.jpg')
+    require(`./images/${i}.jpg`)
 }
 
 require('./styles/fonts.css')

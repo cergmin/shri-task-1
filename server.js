@@ -37,7 +37,10 @@ http.createServer(function(req, res){
                 <head>
                     <meta charset="utf8">
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1, maximum-scale=1">
-                    <title>Яндекс</title>
+                    <title>Яндекс ШРИ</title>
+                    <link type="image/png" sizes="16x16" rel="icon" href="./images/favicon-16-${theme ? 'light' : 'dark'}.png">
+                    <link type="image/png" sizes="32x32" rel="icon" href="./images/favicon-32-${theme ? 'light' : 'dark'}.png">
+                    <link type="image/png" sizes="48x48" rel="icon" href="./images/favicon-48-${theme ? 'light' : 'dark'}.png">
                     <link rel="stylesheet" href="./stories.css">
                     <script src="./stories.js"></script>
                     <script>

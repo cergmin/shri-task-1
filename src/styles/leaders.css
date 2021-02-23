@@ -189,7 +189,7 @@
 
     .story-leaders .column.selected .place_number:before{
         content: '';
-        background: var(--separator-background);
+        background: var(--text-color-main);
         margin: 0 auto;
         width: 3.75rem;
         height: 1px;

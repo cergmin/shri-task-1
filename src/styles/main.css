@@ -24,8 +24,12 @@
 }
 
 body{
-    --story-width: 100vw;
-    --story-height: 100vh;
+    --scale: 1;
+    --story-width: calc(100vw / var(--scale));
+    --story-height: calc(100vh / var(--scale));
+    transform: scale(var(--scale));
+    transform-origin: center top;
+    overflow: hidden;
     /* --story-height: 668px; */
     /* --story-width: 376px; */
 }
@@ -104,6 +108,7 @@ header{
     margin: 0 auto;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
     position: relative;
 }
 

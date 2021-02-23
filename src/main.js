@@ -6,6 +6,7 @@ require('./styles/fonts.css')
 require('./styles/themes.css')
 require('./styles/main.css')
 require('./styles/leaders.css')
+require('./styles/chart.css')
 require('./styles/activity.css')
 
 require('./scripts/render.js')

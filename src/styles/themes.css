@@ -18,8 +18,10 @@ body.theme_light{
 
 .story-leaders,
 .story-chart,
+.story-vote,
 body.theme_dark .story-leaders,
-body.theme_dark .story-chart{
+body.theme_dark .story-chart,
+body.theme_dark .story-vote{
     --box-extra-background: radial-gradient(91.67% 122.17% at 69.17% -11.17%, #FFA300 0%, #2D1C00 100%);
     --box-min-background: linear-gradient(180deg, rgba(0, 0, 0, 0) -2.22%, rgba(0, 0, 0, 0.8) 100%), radial-gradient(149.08% 95.38% at 38.75% 71.48%, #000000 0%, #231900 0.01%, #4D4D4D 100%);
 
@@ -28,7 +30,8 @@ body.theme_dark .story-chart{
 }
 
 body.theme_light .story-leaders,
-body.theme_light .story-chart{
+body.theme_light .story-chart,
+body.theme_light .story-vote{
     --box-extra-background: linear-gradient(-180deg, #FFF2D1 1%, #FFD66C 100%);
     --box-min-background: linear-gradient(-180deg, #F4F4F4 1%, #E9E9E9 100%, #EAEAEA 100%);
 
@@ -39,6 +42,22 @@ body.theme_light .story-chart{
 .story-chart,
 body.theme_dark .story-chart{
     --box-extra-background: radial-gradient(81.14% 100% at 50% 0%, #FFA300 0%, #2D1C00 100%);
+}
+
+.story-vote,
+body.theme_dark .story-vote{
+    --nav-button-image: url("../images/button-dark.svg");
+    --nav-button-hover-image: url("../images/button-hover-dark.svg");
+    --box-min-background: radial-gradient(85.62% 148.33% at 49.85% 100%, rgba(68, 58, 42, 0.7864) 0%, rgba(0, 0, 0, 0.8) 100%);
+    --box-min-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.2), inset 2px 2px 16px rgba(255, 255, 255, 0.1);
+}
+
+body.theme_light .story-vote{
+    --nav-button-image: url("../images/button-light.svg");
+    --nav-button-hover-image: url("../images/button-hover-light.svg");
+    --box-min-background: linear-gradient(180deg, rgba(244, 244, 244, 0.9) 0.82%, #E9E9E9 100%, rgba(234, 234, 234, 0) 100%);
+    --box-extra-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.8);
+    --box-min-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(207, 207, 207, 0.5);
 }
 
 .story-activity,

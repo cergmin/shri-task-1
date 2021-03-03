@@ -54,6 +54,55 @@ function renderLeaders(data){
     return layout;
 }
 
+function renderVote(data){
+    let layout = "";
+    let offset = 0;
+
+    let backButtonDataParams = JSON.stringify({
+        alias: 'vote',
+        data: {
+            offset: Math.max(0, offset - 6)
+        }
+    });
+    let nextButtonDataParams = JSON.stringify({
+        alias: 'vote',
+        data: {
+            offset: Math.min(data["users"].length - 8, offset + 6)
+        }
+    });
+
+    layout += `<header>
+                   <h1 class="title">${data["title"]}</h1>
+                   <h3 class="subtitle">${data["subtitle"]}</h3>
+               </header>`;
+    layout += `<div class="grid">
+                   <button class="back_button" type="button" disabled data-action="update" data-params='${backButtonDataParams}'></button>`;
+    
+    for(let i = offset; i < Math.min(data["users"].length, offset + 8); i++){
+        isSelected = (data["selectedUserId"] == data["users"][i]["id"]);
+        
+        if(isSelected){
+            layout += `<button class="user selected" type="button" disabled tabindx="-1">`;
+        }
+        else{
+            layout += `<button class="user" type="button" data-action="update">`;
+        }
+
+        layout += `<img src="./images/${data["users"][i]["avatar"]}" class="avatar">`;
+
+        if(isSelected){
+            layout += `<span class="emoji">👍</span>`;
+        }
+
+        layout += `    <h3 class="name">${data["users"][i]["name"]}</h3>
+                   </button>`;
+    }
+
+    layout += `<button class="next_button" type="button" data-action="update" data-params='${nextButtonDataParams}'></button>`;
+
+    return layout;
+}
+
 function renderChart(data){
     let layout = "";
     
@@ -235,6 +284,9 @@ function renderTemplate(alias, data){
     }
     else if(alias === "leaders"){
         layout += renderLeaders(data);
+    }
+    else if(alias === "vote"){
+        layout += renderVote(data);
     }
     else if(alias === "chart"){
         layout += renderChart(data);

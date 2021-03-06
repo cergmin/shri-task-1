@@ -26,6 +26,7 @@
 body{
     --story-width: 100vw;
     --story-height: 100vh;
+    touch-action: manipulation;
 }
 
 /* Исправление высоты окна в мобильных браузерах */
@@ -39,8 +40,8 @@ body{
 
 /* Значения для разработки */
 /* body{
-    --story-width: 668px;
-    --story-height: 376px;
+    --story-height: 668px;
+    --story-width: 376px;
 } */
 
 h1, h2, h3, h4{

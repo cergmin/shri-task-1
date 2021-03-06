@@ -54,9 +54,8 @@ function renderLeaders(data){
     return layout;
 }
 
-function renderVote(data){
+function renderVote(data, offset=0){
     let layout = "";
-    let offset = 0;
 
     let backButtonDataParams = JSON.stringify({
         alias: 'vote',
@@ -71,18 +70,21 @@ function renderVote(data){
         }
     });
 
+    let canGoBack = (offset == 0);
+    let canGoFurther = (offset >= data["users"].length - 8);
+
     layout += `<header>
                    <h1 class="title">${data["title"]}</h1>
                    <h3 class="subtitle">${data["subtitle"]}</h3>
                </header>`;
     layout += `<div class="grid">
-                   <button class="back_button" type="button" disabled data-action="update" data-params='${backButtonDataParams}'></button>`;
+                   <button class="back_button" type="button" ${canGoBack ? "disabled" : ""} data-action="update" data-params='${backButtonDataParams}'></button>`;
     
     for(let i = offset; i < Math.min(data["users"].length, offset + 8); i++){
         isSelected = (data["selectedUserId"] == data["users"][i]["id"]);
         
         if(isSelected){
-            layout += `<button class="user selected" type="button" disabled tabindx="-1">`;
+            layout += `<button class="user selected" type="button" disabled>`;
         }
         else{
             layout += `<button class="user" type="button" data-action="update">`;
@@ -98,7 +100,7 @@ function renderVote(data){
                    </button>`;
     }
 
-    layout += `<button class="next_button" type="button" data-action="update" data-params='${nextButtonDataParams}'></button>`;
+    layout += `<button class="next_button" type="button" ${canGoFurther ? "disabled" : ""} data-action="update" data-params='${nextButtonDataParams}'></button>`;
 
     return layout;
 }

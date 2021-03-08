@@ -200,12 +200,12 @@ function renderDiagram(data){
     }
 
     // Рендерим svg диаграмму
-    const padding = 10;
+    const padding = 0;
     const radius = 264 / 2;
     const roundingRadius = 6;
     const innerRadiusK = 0.7;
     const marginDeg = 1;
-    let svg_diagram = `<svg class="svg_diagram" width="${(radius + padding) * 2}" height="${(radius + padding) * 2}" viewBox="0 0 ${(radius + padding) * 2} ${(radius + padding) * 2}" fill="none" xmlns="http://www.w3.org/2000/svg">`;
+    let svg_diagram = `<svg class="svg_diagram" width="130" height="130" viewBox="0 0 ${(radius + padding) * 2} ${(radius + padding) * 2}" fill="none" xmlns="http://www.w3.org/2000/svg">`;
 
     let lastEndDeg = 239;
     for(let i = 0; i < categories.length; i++){
@@ -319,8 +319,8 @@ function renderDiagram(data){
                 "blur_radius": 10
             },
             "inset_light": {
-                "x_offset": -0.5,
-                "y_offset": 0.5,
+                "x_offset": -0.75,
+                "y_offset": 0.75,
                 "blur_radius": 0.5
             }
         },
@@ -452,9 +452,21 @@ function renderDiagram(data){
     layout += `<header>
                    <h1 class="title">${data["title"]}</h1>
                    <h3 class="subtitle">${data["subtitle"]}</h3>
-               </header>`;
+               </header>
+               <main>
+                   ${svg_diagram}
+                   <div class="categories">`;
     
-    layout += svg_diagram;
+    for(let i = 0; i < categories.length; i++){
+        layout += `<div class="category">
+                       <h3 class="category_title">${categories[i]["title"]}</h3>
+                       <h3 class="category_value">${categories[i]["value"]}</h3>
+                       <h3 class="category_difference">${categories[i]["difference"]}</h3>
+                   </div>`;
+    }
+
+    layout += `    </div>
+               </main>`;
 
     return layout;
 }

@@ -1,5 +1,110 @@
+.story-diagram main{
+    width: auto;
+    height: 0;
+    flex: 1;
+    margin: 30px 42px;
+    align-content: center;
+    justify-content: center;
+    display: flex;
+    box-sizing: border-box;
+}
+
 .story-diagram .svg_diagram{
-    width: 90vw;
+    width: auto;
     height: auto;
-    margin: 20px auto;
+    margin-right: 42px;
+    flex: 0 1 auto;
+}
+
+.story-diagram .categories{
+    width: 19rem;
+    max-width: 19rem;
+    height: min-content;
+    align-self: center;
+    flex: 1 0 auto;
+}
+
+.story-diagram .category{
+    padding: 16px 0;
+    border-bottom: 2px solid rgba(145, 143, 138, 0.3);
+}
+
+.story-diagram .category:last-child{
+    border: 0;
+}
+
+.story-diagram .category_title,
+.story-diagram .category_difference,
+.story-diagram .category_value{
+    width: fit-content;
+    display: inline-block;
+}
+
+.story-diagram .category_title{
+    transform: translateY(-0.125rem);
+}
+
+.story-diagram .category_title::before{
+    content: '';
+    background: var(--circle-extra-background);
+    box-shadow: var(--circle-extra-shadow);
+    width: 1rem;
+    height: 1rem;
+    margin-right: 10px;
+    transform: translateY(0.125rem);
+    border-radius: 100%;
+    display: inline-block;
+}
+
+.story-diagram .category:nth-child(1) .category_title::before{
+    background: var(--circle-extra-background);
+    box-shadow: var(--circle-extra-shadow);
+}
+
+.story-diagram .category:nth-child(2) .category_title::before{
+    background: var(--circle-max-background);
+    box-shadow: var(--circle-max-shadow);
+}
+
+.story-diagram .category:nth-child(3) .category_title::before{
+    background: var(--circle-mid-background);
+    box-shadow: var(--circle-mid-shadow);
+}
+
+.story-diagram .category:nth-child(4) .category_title::before{
+    background: var(--circle-min-background);
+    box-shadow: var(--circle-min-shadow);
+}
+
+.story-diagram .category_difference,
+.story-diagram .category_value{
+    color: var(--text-color-sub);
+    float: right;
+}
+
+.story-diagram .category_value{
+    margin-left: 16px;
+}
+
+@media screen and (orientation:portrait) {
+    .story-diagram main{
+        margin: 0;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .story-diagram .svg_diagram {
+        width: auto;
+        height: auto;
+        margin: 32px 24px 16px;
+        flex: 1 1 auto;
+    }
+    .story-diagram .categories {
+        margin-bottom: 8px;
+        width: 100%;
+        max-width: 100%;
+        padding: 0 24px;
+        box-sizing: border-box;
+        flex: 0 1 auto;
+    }
 }

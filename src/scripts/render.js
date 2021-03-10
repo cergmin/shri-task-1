@@ -220,7 +220,7 @@ function renderDiagram(data){
         let x = Math.cos((startDeg + cornerOuterDeltaDeg) / 180 * Math.PI) * radius + (radius + padding);
         let y = Math.sin((startDeg + cornerOuterDeltaDeg) / 180 * Math.PI) * radius + (radius + padding);
         
-        svg_diagram += `<path fill="url(#diagram_gradient_${i})" filter="url(#diagram_filter_${i})" fill-opacity="0.5" d="M ${x} ${y} `;
+        svg_diagram += `<path fill="url(#diagram_gradient_dark_${i})" filter="url(#diagram_filter_dark_${i})" fill-opacity="0.5" d="M ${x} ${y} `;
 
         // Точки внешней дуги
         for(let deg = (startDeg + cornerOuterDeltaDeg); deg - 1 < (endDeg - cornerOuterDeltaDeg); deg++){
@@ -324,125 +324,204 @@ function renderDiagram(data){
                 "blur_radius": 0.5
             }
         },
-        "colors": [
-            {
-                "gradient": [
-                    [0.7188, "rgba(255, 163, 0, 0.8)"],
-                    [1, "rgba(58, 54, 47, 0.8)"]
-                ],
-                "shadow": {
-                    "color": "rgb(248, 158, 0)",
-                    "opacity": 0.2
+        "colors": {
+            "dark": [
+                {
+                    "gradient": [
+                        [0.7188, "rgba(255, 163, 0, 0.8)"],
+                        [1, "rgba(58, 54, 47, 0.8)"]
+                    ],
+                    "shadow": {
+                        "color": "rgb(248, 158, 0)",
+                        "opacity": 0.2
+                    },
+                    "inset_shadow": {
+                        "color": "rgb(255, 162, 0)",
+                        "opacity": 0.9
+                    },
+                    "inset_light": {
+                        "color": "rgb(255, 255, 255)",
+                        "opacity": 0.5
+                    }
                 },
-                "inset_shadow": {
-                    "color": "rgb(255, 162, 0)",
-                    "opacity": 0.9
+                {
+                    "gradient": [
+                        [0.7292, "rgba(99, 63, 0, 0.5)"],
+                        [1, "rgba(15, 9, 0, 0.5)"]
+                    ],
+                    "shadow": {
+                        "color": "rgb(147, 93, 0)",
+                        "opacity": 0.2
+                    },
+                    "inset_shadow": {
+                        "color": "rgb(202, 129, 0)",
+                        "opacity": 0.9
+                    },
+                    "inset_light": {
+                        "color": "rgb(255, 255, 255)",
+                        "opacity": 0.5
+                    }
                 },
-                "inset_light": {
-                    "color": "rgb(255, 255, 255)",
-                    "opacity": 0.5
+                {
+                    "gradient": [
+                        [0.7188, "rgba(155, 155, 155, 0.5)"],
+                        [1, "rgba(56, 41, 0, 0.5)"]
+                    ],
+                    "shadow": {
+                        "color": "rgb(0, 0, 0)",
+                        "opacity": 0.2
+                    },
+                    "inset_shadow": {
+                        "color": "rgb(139, 139, 139)",
+                        "opacity": 0.9
+                    },
+                    "inset_light": {
+                        "color": "rgb(255, 255, 255)",
+                        "opacity": 0.5
+                    }
+                },
+                {
+                    "gradient": [
+                        [0.7188, "rgba(77, 77, 77, 0.5)"],
+                        [1, "rgba(56, 41, 0, 0.5)"]
+                    ],
+                    "shadow": {
+                        "color": "rgb(96, 96, 96)",
+                        "opacity": 0.2
+                    },
+                    "inset_shadow": {
+                        "color": "rgb(38, 38, 38)",
+                        "opacity": 0.9
+                    },
+                    "inset_light": {
+                        "color": "rgb(255, 255, 255)",
+                        "opacity": 0.5
+                    }
                 }
-            },
-            {
-                "gradient": [
-                    [0.7292, "rgba(99, 63, 0, 0.5)"],
-                    [1, "rgba(15, 9, 0, 0.5)"]
-                ],
-                "shadow": {
-                    "color": "rgb(147, 93, 0)",
-                    "opacity": 0.2
+            ],
+            "light": [
+                {
+                    "gradient": [
+                        [0.8125, "rgba(255, 184, 0, 0.56)"],
+                        [1, "rgba(255, 239, 153, 0.32)"]
+                    ],
+                    "shadow": {
+                        "color": "rgb(255, 255, 255)",
+                        "opacity": 0
+                    },
+                    "inset_shadow": {
+                        "color": "rgb(255, 176, 57)",
+                        "opacity": 0.9
+                    },
+                    "inset_light": {
+                        "color": "rgb(255, 255, 255)",
+                        "opacity": 0.5
+                    }
                 },
-                "inset_shadow": {
-                    "color": "rgb(202, 129, 0)",
-                    "opacity": 0.9
+                {
+                    "gradient": [
+                        [0.8125, "rgba(255, 184, 0, 0.24)"],
+                        [1, "rgba(255, 239, 153, 0.12)"]
+                    ],
+                    "shadow": {
+                        "color": "rgb(255, 255, 255)",
+                        "opacity": 0
+                    },
+                    "inset_shadow": {
+                        "color": "rgb(255, 176, 57)",
+                        "opacity": 0.4
+                    },
+                    "inset_light": {
+                        "color": "rgb(255, 255, 255)",
+                        "opacity": 0.5
+                    }
                 },
-                "inset_light": {
-                    "color": "rgb(255, 255, 255)",
-                    "opacity": 0.5
+                {
+                    "gradient": [
+                        [0.8281, "rgba(166, 166, 166, 0.1725)"],
+                        [0.9219, "rgba(203, 203, 203, 0.05)"]
+                    ],
+                    "shadow": {
+                        "color": "rgb(255, 255, 255)",
+                        "opacity": 0
+                    },
+                    "inset_shadow": {
+                        "color": "rgba(105, 105, 105)",
+                        "opacity": 0.2
+                    },
+                    "inset_light": {
+                        "color": "rgb(255, 255, 255)",
+                        "opacity": 0.5
+                    }
+                },
+                {
+                    "gradient": [
+                        [0.8281, "rgba(191, 191, 191, 0.345)"],
+                        [0.9219, "rgba(228, 228, 228, 0.1)"]
+                    ],
+                    "shadow": {
+                        "color": "rgb(255, 255, 255)",
+                        "opacity": 0
+                    },
+                    "inset_shadow": {
+                        "color": "rgb(131, 131, 131)",
+                        "opacity": 0.6
+                    },
+                    "inset_light": {
+                        "color": "rgb(255, 255, 255)",
+                        "opacity": 0.5
+                    }
                 }
-            },
-            {
-                "gradient": [
-                    [0.7188, "rgba(155, 155, 155, 0.5)"],
-                    [1, "rgba(56, 41, 0, 0.5)"]
-                ],
-                "shadow": {
-                    "color": "rgb(0, 0, 0)",
-                    "opacity": 0.2
-                },
-                "inset_shadow": {
-                    "color": "rgb(139, 139, 139)",
-                    "opacity": 0.9
-                },
-                "inset_light": {
-                    "color": "rgb(255, 255, 255)",
-                    "opacity": 0.5
-                }
-            },
-            {
-                "gradient": [
-                    [0.7188, "rgba(77, 77, 77, 0.5)"],
-                    [1, "rgba(56, 41, 0, 0.5)"]
-                ],
-                "shadow": {
-                    "color": "rgb(96, 96, 96)",
-                    "opacity": 0.2
-                },
-                "inset_shadow": {
-                    "color": "rgb(38, 38, 38)",
-                    "opacity": 0.9
-                },
-                "inset_light": {
-                    "color": "rgb(255, 255, 255)",
-                    "opacity": 0.5
-                }
-            }
-        ]
+            ]
+        }
     }
     svg_diagram += `<defs>`;
+    for(let theme_index = 0; theme_index < Object.keys(diagram_appearance["colors"]).length; theme_index++){
+        const theme = Object.keys(diagram_appearance["colors"])[theme_index];
 
-    for(let i = 0; i < diagram_appearance["colors"].length; i++){
-        svg_diagram += `<radialGradient id="diagram_gradient_${i}" r="${radius + padding}" cx="49.84%" cy="49.84%" fx="49.84%" fy="50.16%" gradientUnits="userSpaceOnUse">`;
+        for(let i = 0; i < diagram_appearance["colors"][theme].length; i++){
+            svg_diagram += `<radialGradient id="diagram_gradient_${theme}_${i}" r="${radius + padding}" cx="49.84%" cy="49.84%" fx="49.84%" fy="50.16%" gradientUnits="userSpaceOnUse">`;
 
-        for(let j = 0; j < diagram_appearance["colors"][i]["gradient"].length; j++){
-            svg_diagram += `<stop offset="${diagram_appearance["colors"][i]["gradient"][j][0]}" stop-color="${diagram_appearance["colors"][i]["gradient"][j][1]}"/>`;
+            for(let j = 0; j < diagram_appearance["colors"][theme][i]["gradient"].length; j++){
+                svg_diagram += `<stop offset="${diagram_appearance["colors"][theme][i]["gradient"][j][0]}" stop-color="${diagram_appearance["colors"][theme][i]["gradient"][j][1]}"/>`;
+            }
+
+            svg_diagram += `</radialGradient>`;
+
+            svg_diagram += `<filter id="diagram_filter_${theme}_${i}" x="${-filter_expansion}%" y="${-filter_expansion}%" width="${100 + filter_expansion * 2}%" height="${100 + filter_expansion * 2}%">
+                                <feColorMatrix in="SourceAlpha" result="diagram_mask" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+
+                                <feMorphology in="diagram_mask" result="eroded_mask" operator="erode" radius="${diagram_appearance["settings"]["shadow"]["erode_radius"]}"/>
+                                <feGaussianBlur in="eroded_mask" result="blurred_mask" stdDeviation="${diagram_appearance["settings"]["shadow"]["blur_radius"]}"/>
+                                <feFlood flood-color="${diagram_appearance["colors"][theme][i]["shadow"]["color"]}" flood-opacity="${diagram_appearance["colors"][theme][i]["shadow"]["opacity"]}" result="shadow_color"></feFlood>
+                                <feComposite in="shadow_color" in2="blurred_mask" operator="in" result="shadow"></feComposite>
+
+                                <feColorMatrix type="matrix" in="diagram_mask" result="inverted_mask"
+                                    values="1 0 0 0 0 
+                                            0 1 0 0 0 
+                                            0 0 1 0 0
+                                            0 0 0 -1 1"/>
+                                <feGaussianBlur in="inverted_mask" result="blurred_mask" stdDeviation="${diagram_appearance["settings"]["inset_shadow"]["blur_radius"]}"/>
+                                <feOffset in="blurred_mask" result="blurred_mask" dx="0" dy="-2" />
+                                <feComposite in="blurred_mask" in2="diagram_mask" operator="in" result="inset_shadow_mask"></feComposite>
+                                <feColorMatrix in="inset_shadow_mask" result="inset_shadow_mask" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.5 0"/>
+                                <feFlood flood-color="${diagram_appearance["colors"][theme][i]["inset_shadow"]["color"]}" flood-opacity="${diagram_appearance["colors"][theme][i]["inset_shadow"]["opacity"]}" result="shadow_color"></feFlood>
+                                <feComposite in="shadow_color" in2="inset_shadow_mask" operator="in" result="inset_shadow"></feComposite>
+
+                                <feOffset in="diagram_mask" result="moved_mask" dx="${diagram_appearance["settings"]["inset_light"]["x_offset"]}" dy="${diagram_appearance["settings"]["inset_light"]["y_offset"]}"></feOffset>
+                                <feGaussianBlur in="moved_mask" result="blurred_light_mask" stdDeviation="${diagram_appearance["settings"]["inset_light"]["blur_radius"]}"/>
+                                <feComposite in="diagram_mask" in2="blurred_light_mask" operator="out" result="inset_light_mask"></feComposite>
+                                <feFlood flood-color="${diagram_appearance["colors"][theme][i]["inset_light"]["color"]}" flood-opacity="${diagram_appearance["colors"][theme][i]["inset_light"]["opacity"]}" result="light_color"></feFlood>
+                                <feComposite in="light_color" in2="inset_light_mask" operator="in" result="inset_light"></feComposite>
+                                
+                                <feMerge>
+                                    <feMergeNode in="shadow"></feMergeNode>
+                                    <feMergeNode in="SourceGraphic"></feMergeNode>
+                                    <feMergeNode in="inset_light"></feMergeNode>
+                                    <feMergeNode in="inset_shadow"></feMergeNode>
+                                </feMerge>
+                            </filter>`;
         }
-
-        svg_diagram += `</radialGradient>`;
-
-        svg_diagram += `<filter id="diagram_filter_${i}" x="${-filter_expansion}%" y="${-filter_expansion}%" width="${100 + filter_expansion * 2}%" height="${100 + filter_expansion * 2}%">
-                            <feColorMatrix in="SourceAlpha" result="diagram_mask" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-
-                            <feMorphology in="diagram_mask" result="eroded_mask" operator="erode" radius="${diagram_appearance["settings"]["shadow"]["erode_radius"]}"/>
-                            <feGaussianBlur in="eroded_mask" result="blurred_mask" stdDeviation="${diagram_appearance["settings"]["shadow"]["blur_radius"]}"/>
-                            <feFlood flood-color="${diagram_appearance["colors"][i]["shadow"]["color"]}" flood-opacity="${diagram_appearance["colors"][i]["shadow"]["opacity"]}" result="shadow_color"></feFlood>
-                            <feComposite in="shadow_color" in2="blurred_mask" operator="in" result="shadow"></feComposite>
-
-                            <feColorMatrix type="matrix" in="diagram_mask" result="inverted_mask"
-                                values="1 0 0 0 0 
-                                        0 1 0 0 0 
-                                        0 0 1 0 0
-                                        0 0 0 -1 1"/>
-                            <feGaussianBlur in="inverted_mask" result="blurred_mask" stdDeviation="${diagram_appearance["settings"]["inset_shadow"]["blur_radius"]}"/>
-                            <feOffset in="blurred_mask" result="blurred_mask" dx="0" dy="-2" />
-                            <feComposite in="blurred_mask" in2="diagram_mask" operator="in" result="inset_shadow_mask"></feComposite>
-                            <feColorMatrix in="inset_shadow_mask" result="inset_shadow_mask" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.5 0"/>
-                            <feFlood flood-color="${diagram_appearance["colors"][i]["inset_shadow"]["color"]}" flood-opacity="${diagram_appearance["colors"][i]["inset_shadow"]["opacity"]}" result="shadow_color"></feFlood>
-                            <feComposite in="shadow_color" in2="inset_shadow_mask" operator="in" result="inset_shadow"></feComposite>
-
-                            <feOffset in="diagram_mask" result="moved_mask" dx="${diagram_appearance["settings"]["inset_light"]["x_offset"]}" dy="${diagram_appearance["settings"]["inset_light"]["y_offset"]}"></feOffset>
-                            <feGaussianBlur in="moved_mask" result="blurred_light_mask" stdDeviation="${diagram_appearance["settings"]["inset_light"]["blur_radius"]}"/>
-                            <feComposite in="diagram_mask" in2="blurred_light_mask" operator="out" result="inset_light_mask"></feComposite>
-                            <feFlood flood-color="${diagram_appearance["colors"][i]["inset_light"]["color"]}" flood-opacity="${diagram_appearance["colors"][i]["inset_light"]["opacity"]}" result="light_color"></feFlood>
-                            <feComposite in="light_color" in2="inset_light_mask" operator="in" result="inset_light"></feComposite>
-                            
-                            <feMerge>
-                                <feMergeNode in="shadow"></feMergeNode>
-                                <feMergeNode in="SourceGraphic"></feMergeNode>
-                                <feMergeNode in="inset_light"></feMergeNode>
-                                <feMergeNode in="inset_shadow"></feMergeNode>
-                            </feMerge>
-                        </filter>`;
     }
 
     svg_diagram += `</defs>`;

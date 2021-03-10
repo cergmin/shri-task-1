@@ -73,6 +73,16 @@ body.theme_dark .story-diagram{
     --circle-min-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5);
 
     --separator-bakcground: rgba(145, 143, 138, 0.3);
+
+    --diagram-fill-1: url("#diagram_gradient_dark_0");
+    --diagram-fill-2: url("#diagram_gradient_dark_1");
+    --diagram-fill-3: url("#diagram_gradient_dark_2");
+    --diagram-fill-4: url("#diagram_gradient_dark_3");
+
+    --diagram-filter-1: url("#diagram_filter_dark_0");
+    --diagram-filter-2: url("#diagram_filter_dark_1");
+    --diagram-filter-3: url("#diagram_filter_dark_2");
+    --diagram-filter-4: url("#diagram_filter_dark_3");
 }
 
 body.theme_light .story-diagram{
@@ -85,6 +95,16 @@ body.theme_light .story-diagram{
     --circle-max-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.4);
     --circle-mid-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(105, 105, 105, 0.2);
     --circle-min-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(131, 131, 131, 0.6);
+
+    --diagram-fill-1: url("#diagram_gradient_light_0");
+    --diagram-fill-2: url("#diagram_gradient_light_1");
+    --diagram-fill-3: url("#diagram_gradient_light_2");
+    --diagram-fill-4: url("#diagram_gradient_light_3");
+
+    --diagram-filter-1: url("#diagram_filter_light_0");
+    --diagram-filter-2: url("#diagram_filter_light_1");
+    --diagram-filter-3: url("#diagram_filter_light_2");
+    --diagram-filter-4: url("#diagram_filter_light_3");
 }
 
 .story-activity,

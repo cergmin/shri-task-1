@@ -455,6 +455,10 @@ function renderDiagram(data){
                </header>
                <main>
                    ${svg_diagram}
+                   <div class="diagram_text">
+                       <h2 class="total">${data["totalText"]}</h2>
+                       <h3 class="difference">${data["differenceText"]}</h3>
+                   </div>
                    <div class="categories">`;
     
     for(let i = 0; i < categories.length; i++){

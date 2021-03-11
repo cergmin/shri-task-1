@@ -139,11 +139,7 @@
     border-radius: 100%;
     user-select: none;
     -webkit-user-drag: none;
-    filter: grayscale(1);
-}
-
-body.theme_light .story-vote .user .avatar{
-    filter: grayscale(0);
+    filter: grayscale(var(--grayscale-coeff));
 }
 
 .story-vote .user .name{

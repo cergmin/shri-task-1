@@ -52,7 +52,7 @@
     bottom: calc(var(--place-box-height) + 26px + 3.250rem);
     margin: 0 auto;
     border-radius: 100%;
-    filter: grayscale(1);
+    filter: grayscale(var(--grayscale-coeff));
     user-select: none;
     position: absolute;
 }

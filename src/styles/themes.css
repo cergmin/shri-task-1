@@ -22,6 +22,8 @@ body.theme_light{
 body.theme_dark .story-leaders,
 body.theme_dark .story-chart,
 body.theme_dark .story-vote{
+    --grayscale-coeff: 1;
+
     --box-extra-background: radial-gradient(91.67% 122.17% at 69.17% -11.17%, #FFA300 0%, #2D1C00 100%);
     --box-min-background: linear-gradient(180deg, rgba(0, 0, 0, 0) -2.22%, rgba(0, 0, 0, 0.8) 100%), radial-gradient(149.08% 95.38% at 38.75% 71.48%, #000000 0%, #231900 0.01%, #4D4D4D 100%);
 
@@ -32,6 +34,8 @@ body.theme_dark .story-vote{
 body.theme_light .story-leaders,
 body.theme_light .story-chart,
 body.theme_light .story-vote{
+    --grayscale-coeff: 0;
+
     --box-extra-background: linear-gradient(-180deg, #FFF2D1 1%, #FFD66C 100%);
     --box-min-background: linear-gradient(-180deg, #F4F4F4 1%, #E9E9E9 100%, #EAEAEA 100%);
 

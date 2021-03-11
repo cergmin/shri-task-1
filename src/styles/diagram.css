@@ -3,7 +3,7 @@
     /* Первый аргумент min - максимально допустимая высота диаграммы */
     /* Второй аргумент min - максимально допустимая ширина диаграммы */
     --diagram-size: min(
-        calc(100vh - 20px - 60px - 8px - 3.125rem),
+        calc(var(--story-height) - 20px - 60px - 8px - 3.125rem),
         calc(var(--story-width) - 84px - 42px - 19rem)
     );
 
@@ -91,11 +91,12 @@
 }
 
 .story-diagram .category{
-    padding: 1rem 0;
+    padding: 1rem 0 calc(1rem - 2px);
     border-bottom: 2px solid rgba(145, 143, 138, 0.3);
 }
 
 .story-diagram .category:last-child{
+    padding: 1rem 0;
     border: 0;
 }
 

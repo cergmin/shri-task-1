@@ -661,7 +661,7 @@ function renderDiagram(data){
     const roundingRadius = 6;
     const innerRadiusK = 0.7;
     const marginDeg = 1;
-    let svg_diagram = `<svg class="svg_diagram" width="130" height="130" viewBox="0 0 ${(radius + padding) * 2} ${(radius + padding) * 2}" fill="none" xmlns="http://www.w3.org/2000/svg">`;
+    let svg_diagram = `<svg class="svg_diagram" width="130" height="130" shape-rendering="geometricPrecision" viewBox="0 0 ${(radius + padding) * 2} ${(radius + padding) * 2}" fill="none" xmlns="http://www.w3.org/2000/svg">`;
 
     let lastEndDeg = 239;
     for(let i = 0; i < categories.length; i++){
@@ -775,8 +775,8 @@ function renderDiagram(data){
                 "blur_radius": 10
             },
             "inset_light": {
-                "x_offset": -0.75,
-                "y_offset": 0.75,
+                "x_offset": -1,
+                "y_offset": 1,
                 "blur_radius": 0.5
             }
         },
@@ -936,7 +936,7 @@ function renderDiagram(data){
         const theme = Object.keys(diagram_appearance["colors"])[theme_index];
 
         for(let i = 0; i < diagram_appearance["colors"][theme].length; i++){
-            svg_diagram += `<radialGradient id="diagram_gradient_${theme}_${i}" r="${radius + padding}" cx="49.84%" cy="49.84%" fx="49.84%" fy="50.16%" gradientUnits="userSpaceOnUse">`;
+            svg_diagram += `<radialGradient id="diagram_gradient_${theme}_${i}" r="${radius * 1.0866 + padding}" cx="49.84%" cy="49.84%" fx="49.84%" fy="50.16%" gradientUnits="userSpaceOnUse">`;
 
             for(let j = 0; j < diagram_appearance["colors"][theme][i]["gradient"].length; j++){
                 svg_diagram += `<stop offset="${diagram_appearance["colors"][theme][i]["gradient"][j][0]}" stop-color="${diagram_appearance["colors"][theme][i]["gradient"][j][1]}"/>`;

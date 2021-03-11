@@ -29,15 +29,6 @@ body{
     touch-action: manipulation;
 }
 
-/* Исправление высоты окна в мобильных браузерах */
-@supports (height: -webkit-fill-available){
-    @media screen and (min-height: 400px){
-        body{
-            --story-height: -webkit-fill-available;
-        }
-    }
-}
-
 /* Значения для разработки */
 /* body{
     --story-width: 668px;

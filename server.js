@@ -42,6 +42,8 @@ http.createServer(function(req, res){
                     <link type="image/png" sizes="32x32" rel="icon" href="./images/favicon-32-${theme ? 'light' : 'dark'}.png">
                     <link type="image/png" sizes="48x48" rel="icon" href="./images/favicon-48-${theme ? 'light' : 'dark'}.png">
                     <link rel="stylesheet" href="./stories.css">
+                </head>
+                <body class="${theme ? 'theme_light' : 'theme_dark'}">
                     <script src="./stories.js"></script>
                     <script>
                         window.onload = function() {
@@ -49,8 +51,6 @@ http.createServer(function(req, res){
                             body.innerHTML = renderTemplate("${slideAlias}", ${slideData});
                         }
                     </script>
-                </head>
-                <body class="${theme ? 'theme_light' : 'theme_dark'}">
                 </body>
             </html>
         `);

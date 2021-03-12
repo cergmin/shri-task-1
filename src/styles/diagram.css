@@ -81,6 +81,7 @@
 
 .story-diagram .diagram_text .difference{
     color: var(--text-color-sub);
+    font-weight: 700;
 }
 
 .story-diagram .categories{
@@ -91,12 +92,12 @@
 }
 
 .story-diagram .category{
-    padding: 1rem 0 calc(1rem - 2px);
+    padding: calc(1rem - 2px) 0;
     border-bottom: 2px solid rgba(145, 143, 138, 0.3);
 }
 
 .story-diagram .category:last-child{
-    padding: 1rem 0;
+    padding: 1rem 0 calc(1rem - 2px);
     border: 0;
 }
 

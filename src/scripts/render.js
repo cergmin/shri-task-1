@@ -201,16 +201,22 @@ function renderDiagram(data){
 
     // Рендерим svg диаграмму
     const padding = 0;
-    const radius = 264 / 2;
+    const radius = 284 / 2;
     const roundingRadius = 6;
     const innerRadiusK = 0.7;
     const marginDeg = 1;
+
+    // Нужен для правильного смещения тени к центру в svg фильтре
+    let middleDegree = [];
+
     let svg_diagram = `<svg class="svg_diagram" width="130" height="130" shape-rendering="geometricPrecision" viewBox="0 0 ${(radius + padding) * 2} ${(radius + padding) * 2}" fill="none" xmlns="http://www.w3.org/2000/svg">`;
 
-    let lastEndDeg = 239;
+    let lastEndDeg = 240 - marginDeg;
     for(let i = 0; i < categories.length; i++){
         let startDeg = lastEndDeg + marginDeg;
         let endDeg = startDeg + (360 - marginDeg * categories.length) * categories[i]["percentage"];
+
+        middleDegree.push((startDeg + endDeg) / 2);
 
         let cornerOuterDeltaDeg = (roundingRadius * 180) / (Math.PI * radius);
         let cornerInnerDeltaDeg = (roundingRadius * 180) / (Math.PI * radius * innerRadiusK);
@@ -312,16 +318,16 @@ function renderDiagram(data){
     const diagram_appearance = {
         "settings": {
             "shadow": {
-                "erode_radius": 8,
-                "blur_radius": 10
+                "spread_radius": 8,
+                "blur_radius": 20
             },
             "inset_shadow": {
-                "blur_radius": 10
+                "blur_radius": 23
             },
             "inset_light": {
                 "x_offset": -1,
                 "y_offset": 1,
-                "blur_radius": 0.5
+                "blur_radius": 1
             }
         },
         "colors": {
@@ -477,10 +483,13 @@ function renderDiagram(data){
     }
     svg_diagram += `<defs>`;
     for(let theme_index = 0; theme_index < Object.keys(diagram_appearance["colors"]).length; theme_index++){
-        const theme = Object.keys(diagram_appearance["colors"])[theme_index];
-
+        let theme = Object.keys(diagram_appearance["colors"])[theme_index];
+        
         for(let i = 0; i < diagram_appearance["colors"][theme].length; i++){
-            svg_diagram += `<radialGradient id="diagram_gradient_${theme}_${i}" r="${radius * 1.0866 + padding}" cx="49.84%" cy="49.84%" fx="49.84%" fy="50.16%" gradientUnits="userSpaceOnUse">`;
+            let shadow_offset_x = -Math.cos(middleDegree[i] / 180 * Math.PI) * diagram_appearance["settings"]["shadow"]["spread_radius"];
+            let shadow_offset_y = -Math.sin(middleDegree[i] / 180 * Math.PI) * diagram_appearance["settings"]["shadow"]["spread_radius"];
+
+            svg_diagram += `<radialGradient id="diagram_gradient_${theme}_${i}" r="${radius * 1.07 + padding}" cx="${radius * 2 * 0.4984 + padding}" cy="${radius * 2 * 0.4984 + padding}" fx="${radius * 2 * 0.4984 + padding}" fy="${radius * 2 * 0.5016 + padding}" gradientUnits="userSpaceOnUse">`;
 
             for(let j = 0; j < diagram_appearance["colors"][theme][i]["gradient"].length; j++){
                 svg_diagram += `<stop offset="${diagram_appearance["colors"][theme][i]["gradient"][j][0]}" stop-color="${diagram_appearance["colors"][theme][i]["gradient"][j][1]}"/>`;
@@ -489,27 +498,27 @@ function renderDiagram(data){
             svg_diagram += `</radialGradient>`;
 
             svg_diagram += `<filter id="diagram_filter_${theme}_${i}" x="${-filter_expansion}%" y="${-filter_expansion}%" width="${100 + filter_expansion * 2}%" height="${100 + filter_expansion * 2}%">
-                                <feColorMatrix in="SourceAlpha" result="diagram_mask" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                                <feColorMatrix in="SourceAlpha" result="diagram_mask" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 0"/>
 
-                                <feMorphology in="diagram_mask" result="eroded_mask" operator="erode" radius="${diagram_appearance["settings"]["shadow"]["erode_radius"]}"/>
-                                <feGaussianBlur in="eroded_mask" result="blurred_mask" stdDeviation="${diagram_appearance["settings"]["shadow"]["blur_radius"]}"/>
+                                <feOffset in="diagram_mask" result="moved_mask" dx="${shadow_offset_x}" dy="${shadow_offset_y}"></feOffset>
+                                <feGaussianBlur in="moved_mask" result="blurred_mask" stdDeviation="${diagram_appearance["settings"]["shadow"]["blur_radius"] / 2}"/>
+                                <feMorphology in="blurred_mask" result="eroded_mask" operator="erode" radius="${diagram_appearance["settings"]["shadow"]["spread_radius"] / 2}"/>
                                 <feFlood flood-color="${diagram_appearance["colors"][theme][i]["shadow"]["color"]}" flood-opacity="${diagram_appearance["colors"][theme][i]["shadow"]["opacity"]}" result="shadow_color"></feFlood>
-                                <feComposite in="shadow_color" in2="blurred_mask" operator="in" result="shadow"></feComposite>
+                                <feComposite in="shadow_color" in2="eroded_mask" operator="in" result="shadow"></feComposite>
 
                                 <feColorMatrix type="matrix" in="diagram_mask" result="inverted_mask"
                                     values="1 0 0 0 0 
                                             0 1 0 0 0 
                                             0 0 1 0 0
                                             0 0 0 -1 1"/>
-                                <feGaussianBlur in="inverted_mask" result="blurred_mask" stdDeviation="${diagram_appearance["settings"]["inset_shadow"]["blur_radius"]}"/>
-                                <feOffset in="blurred_mask" result="blurred_mask" dx="0" dy="-2" />
+                                <feGaussianBlur in="inverted_mask" result="blurred_mask" stdDeviation="${diagram_appearance["settings"]["inset_shadow"]["blur_radius"] / 2}"/>
                                 <feComposite in="blurred_mask" in2="diagram_mask" operator="in" result="inset_shadow_mask"></feComposite>
                                 <feColorMatrix in="inset_shadow_mask" result="inset_shadow_mask" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.5 0"/>
                                 <feFlood flood-color="${diagram_appearance["colors"][theme][i]["inset_shadow"]["color"]}" flood-opacity="${diagram_appearance["colors"][theme][i]["inset_shadow"]["opacity"]}" result="shadow_color"></feFlood>
                                 <feComposite in="shadow_color" in2="inset_shadow_mask" operator="in" result="inset_shadow"></feComposite>
 
                                 <feOffset in="diagram_mask" result="moved_mask" dx="${diagram_appearance["settings"]["inset_light"]["x_offset"]}" dy="${diagram_appearance["settings"]["inset_light"]["y_offset"]}"></feOffset>
-                                <feGaussianBlur in="moved_mask" result="blurred_light_mask" stdDeviation="${diagram_appearance["settings"]["inset_light"]["blur_radius"]}"/>
+                                <feGaussianBlur in="moved_mask" result="blurred_light_mask" stdDeviation="${diagram_appearance["settings"]["inset_light"]["blur_radius"] / 2}"/>
                                 <feComposite in="diagram_mask" in2="blurred_light_mask" operator="out" result="inset_light_mask"></feComposite>
                                 <feFlood flood-color="${diagram_appearance["colors"][theme][i]["inset_light"]["color"]}" flood-opacity="${diagram_appearance["colors"][theme][i]["inset_light"]["opacity"]}" result="light_color"></feFlood>
                                 <feComposite in="light_color" in2="inset_light_mask" operator="in" result="inset_light"></feComposite>

@@ -199,19 +199,21 @@ function renderDiagram(data){
         categories[i]["percentage"] = categories[i]["value"] / totalValue;
     }
 
+    console.log(categories);
+
     // Рендерим svg диаграмму
     const padding = 0;
     const radius = 284 / 2;
     const roundingRadius = 6;
     const innerRadiusK = 0.7;
-    const marginDeg = 1;
+    const marginDeg = 1.2;
 
     // Нужен для правильного смещения тени к центру в svg фильтре
     let middleDegree = [];
 
     let svg_diagram = `<svg class="svg_diagram" width="130" height="130" shape-rendering="geometricPrecision" viewBox="0 0 ${(radius + padding) * 2} ${(radius + padding) * 2}" fill="none" xmlns="http://www.w3.org/2000/svg">`;
 
-    let lastEndDeg = 240 - marginDeg;
+    let lastEndDeg = 270 - ((360 - marginDeg * categories.length) * categories[0]["percentage"]) / 2 - marginDeg;
     for(let i = 0; i < categories.length; i++){
         let startDeg = lastEndDeg + marginDeg;
         let endDeg = startDeg + (360 - marginDeg * categories.length) * categories[i]["percentage"];
@@ -322,8 +324,8 @@ function renderDiagram(data){
                 "light": [255, 255, 255]
             },
             "shadow": {
-                "spread_radius": 8,
-                "blur_radius": 20
+                "spread_radius": 0,
+                "blur_radius": 10
             },
             "inset_shadow": {
                 "blur_radius": 23

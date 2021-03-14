@@ -35,7 +35,6 @@
     grid-row: 1;
     grid-column: 1;
     display: block;
-    transform: translateX(1px);
 }
 
 .story-diagram .svg_diagram path:nth-child(1){
@@ -117,8 +116,8 @@
     box-shadow: var(--circle-extra-shadow);
     width: 1rem;
     height: 1rem;
-    margin-right: 10px;
-    transform: translateY(0.125rem);
+    margin-right: 0.625rem;
+    transform: translateY(0.1875rem);
     border-radius: 100%;
     display: inline-block;
 }
@@ -150,7 +149,7 @@
 }
 
 .story-diagram .category_value{
-    margin-left: 16px;
+    margin-left: 1.0625rem;
 }
 
 @media screen and (orientation:portrait) {

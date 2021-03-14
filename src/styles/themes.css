@@ -66,10 +66,10 @@ body.theme_light .story-vote{
 
 .story-diagram,
 body.theme_dark .story-diagram{
-    --circle-extra-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 163, 0, 0.8) 71.88%, rgba(91, 58, 0, 0.8) 100%);
-    --circle-max-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(99, 63, 0, 0.5) 72.92%, rgba(15, 9, 0, 0.5) 100%);
-    --circle-mid-background: radial-gradient(100% 100% at 50% 0%, rgba(151, 151, 151, 0.5) 0%, rgba(41, 41, 41, 0.5) 100%);
-    --circle-min-background: radial-gradient(100% 100% at 50% 0%, rgba(62, 62, 62, 0.5) 0%, rgba(40, 40, 40, 0.5) 100%);
+    --circle-extra-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(91, 58, 0, 0.8) 71.88%, rgba(255, 163, 0, 0.8) 100%);
+    --circle-max-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(15, 9, 0, 0.5) 72.92%, rgba(99, 63, 0, 0.5) 100%);
+    --circle-mid-background: radial-gradient(100% 100% at 50% 0%, rgba(41, 41, 41, 0.5) 0%, rgba(151, 151, 151, 0.5) 100%);
+    --circle-min-background: radial-gradient(100% 100% at 50% 0%, rgba(40, 40, 40, 0.5) 0%, rgba(62, 62, 62, 0.5) 100%);
 
     --circle-extra-shadow: 0px 0px 20px -8px rgba(248, 158, 0, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 162, 0, 0.9);
     --circle-max-shadow: 0px 0px 20px -8px rgba(147, 93, 0, 0.2), inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(202, 129, 0, 0.9);
@@ -90,10 +90,10 @@ body.theme_dark .story-diagram{
 }
 
 body.theme_light .story-diagram{
-    --circle-extra-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.56) 81.25%, rgba(255, 239, 153, 0.32) 100%);
-    --circle-max-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 184, 0, 0.24) 81.25%, rgba(255, 239, 153, 0.12) 100%);
-    --circle-mid-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(166, 166, 166, 0.1725) 82.81%, rgba(203, 203, 203, 0.05) 92.19%);
-    --circle-min-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(191, 191, 191, 0.345) 82.81%, rgba(228, 228, 228, 0.1) 92.19%);
+    --circle-extra-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 239, 153, 0.32) 81.25%, rgba(255, 184, 0, 0.56) 100%);
+    --circle-max-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(255, 239, 153, 0.12) 81.25%, rgba(255, 184, 0, 0.24) 100%);
+    --circle-mid-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(203, 203, 203, 0.05) 82.81%, rgba(166, 166, 166, 0.1725) 92.19%);
+    --circle-min-background: radial-gradient(49.84% 49.84% at 49.84% 50.16%, rgba(228, 228, 228, 0.1) 82.81%, rgba(191, 191, 191, 0.345) 92.19%);
 
     --circle-extra-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.9);
     --circle-max-shadow: inset -1px 1px 1px rgba(255, 255, 255, 0.5), inset 0px 0px 20px rgba(255, 176, 57, 0.4);
@@ -165,10 +165,10 @@ body.theme_dark .story-activity{
 }
 
 body.theme_light .story-activity{    
-    --cell-3d-min-image: url("../images/min-light.svg");
-    --cell-3d-mid-image: url("../images/mid-light.svg");
-    --cell-3d-max-image: url("../images/max-light.svg");
-    --cell-3d-extra-image: url("../images/extra-light.svg");
+    --cell-3d-min-image: url("../images/min-light.png");
+    --cell-3d-mid-image: url("../images/mid-light.png");
+    --cell-3d-max-image: url("../images/max-light.png");
+    --cell-3d-extra-image: url("../images/extra-light.png");
 
     --cell-legend-min-background: radial-gradient(
         2408.25% 2730.55% at 89.06% 78.28%,
@@ -188,7 +188,7 @@ body.theme_light .story-activity{
     --cell-legend-extra-background: radial-gradient(
         66.02% 86.49% at -16.18% 13.51%,
         rgba(255, 186, 6, 0.85) 0%,
-        #FFF2AD 100%
+        #ffcb5a 100%
     );
     --cell-legend-step-horizontal-background: radial-gradient(
         2408.25% 2730.55% at 89.06% 78.28%,

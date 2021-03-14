@@ -1052,11 +1052,10 @@ function renderActivity(data){
                    <h1 class="title">${data["title"]}</h1>
                    <h3 class="subtitle">${data["subtitle"]}</h3>
                </header>`;
-    layout += '<div class="grid">';
+    layout += `<main>
+                   <div class="grid">`;
 
     for(let hour = 0; hour < 24; hour++){
-        layout += '<div class="row" hour="' + hour + '">';
-
         for(let weekday = 0; weekday < 7; weekday++){
             let cellClassList = "cell";
 
@@ -1092,10 +1091,8 @@ function renderActivity(data){
 
             cellClassList += ' v-' + verticalCellHeight;            
             cellClassList += ' h-' + horizontalCellHeight;            
-            layout += '<div class="' + cellClassList + '" h_value="' + commitsPerHours + '" week="' + weekdays[weekday] + '"></div>';
+            layout += `<div class="${cellClassList}" hour="${hour + 1}" weekday="${weekday + 1}" value="${commitsPerHour}"></div>`;
         }
-
-        layout += '</div>';
     }
 
     layout += '</div>';
@@ -1104,8 +1101,8 @@ function renderActivity(data){
     layout += `<ul class="legend">
                    <li>
                        <div class="legend__step"></div>
-                       <h2 class="hide_on_horiz">1 час</h2>
-                       <h2 class="hide_on_vertic">2 часа</h2>
+                       <h3 class="hide_on_horiz">1 час</h3>
+                       <h3 class="hide_on_vertic">2 часа</h3>
                    </li>`;
     
     for(let i = 0; i < ranges.length; i++){
@@ -1113,16 +1110,16 @@ function renderActivity(data){
                        <div class="legend__${ranges[i][2]}_cell"></div>`;
         
         if(ranges[i][0] === ranges[i][1]){
-            layout += `<h2>${ranges[i][0]}</h2>`;
+            layout += `<h3>${ranges[i][0]}</h2>`;
         }
         else{
-            layout += `<h2>${ranges[i][0]} — ${ranges[i][1]}</h2>`;
+            layout += `<h3>${ranges[i][0]} — ${ranges[i][1]}</h2>`;
         }
 
         layout += `</li>`;
     }
     
-    layout += `</ul>`;
+    layout += `</ul></main>`;
 
     return layout;
 }

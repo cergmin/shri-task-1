@@ -1,33 +1,35 @@
 .story-activity{
-    --cell-width: calc((var(--story-width) - 48px) / 7.5);
-    --cell-height: var(--cell-width);
+    --cell-width: min(
+        calc((var(--story-height) - 11rem) * 0.17),
+        calc((var(--story-width) - 3rem) * 0.0685)
+    );
+    --cell-height: calc(var(--cell-width) * 0.767);
+}
+
+.story-activity header .title {
+    max-height: 4rem;
+}
+
+.story-activity main{
+    width: 100%;
+    height: 100%;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    row-gap: 2rem;
+    display: flex;
 }
 
 .story-activity .grid{
-    width: calc(var(--cell-width) * 7);
+    width: min-content;
     height: auto;
-    margin: 0 auto;
-    transform: translateY(-50%);
-    top: calc((78px + (var(--story-height) - 62px)) / 2);
-    left: 24px;
-    right: 24px;
-    position: absolute;
-}
-
-.story-activity .row{
-    width: calc(var(--cell-width) * 7);
-    margin-top: calc(var(--cell-height) * -1 + var(--cell-height) / 2.625);
-    margin-left: 0;
-    display: block;
-    position: relative;
-}
-
-.story-activity .row:first-child{
-    margin-top: 0;
-}
-
-.story-activity .row:nth-child(even){
-    margin-left: calc(var(--cell-width) / 2);
+    padding-top: calc(var(--cell-height) / 3);
+    padding-right: calc(var(--cell-width) / 2);
+    grid-template-columns: repeat(12, var(--cell-width));
+    grid-template-rows: repeat(3, var(--cell-height) 0px) var(--cell-height);
+    grid-auto-flow: column;
+    display: grid;
 }
 
 .story-activity .cell{
@@ -35,6 +37,30 @@
     height: var(--cell-height);
     display: inline-block;
     position: relative;
+}
+
+/* Прячем каждый второй час в горизонтальной ориентации */
+.story-activity .cell[hour="2"],
+.story-activity .cell[hour="4"],
+.story-activity .cell[hour="6"],
+.story-activity .cell[hour="8"],
+.story-activity .cell[hour="10"],
+.story-activity .cell[hour="12"],
+.story-activity .cell[hour="14"],
+.story-activity .cell[hour="16"],
+.story-activity .cell[hour="18"],
+.story-activity .cell[hour="20"],
+.story-activity .cell[hour="22"],
+.story-activity .cell[hour="24"]{
+    display: none;
+}
+
+/* Поднимаем и сдвигаем на пол клетки столбики чётных рядов */
+.story-activity .cell[weekday="2"],
+.story-activity .cell[weekday="4"],
+.story-activity .cell[weekday="6"]{
+    transform: translateX(calc(var(--cell-width) / 2))
+               translateY(calc(var(--cell-height) / -2));
 }
 
 .story-activity .cell::before{
@@ -51,43 +77,34 @@
     position: absolute;
 }
 
-.story-activity .cell.v-min::before{
+.story-activity .cell.h-min::before{
     background-image: var(--cell-3d-min-image);
 }
 
-.story-activity .cell.v-mid::before{
+.story-activity .cell.h-mid::before{
     background-image: var(--cell-3d-mid-image);
 }
 
-.story-activity .cell.v-max::before{
+.story-activity .cell.h-max::before{
     background-image: var(--cell-3d-max-image);
 }
 
-.story-activity .cell.v-extra::before{
+.story-activity .cell.h-extra::before{
     background-image: var(--cell-3d-extra-image);
 }
 
 .story-activity .legend{
-    max-width: 328px;
-    height: 38px;
-    margin: 0 auto;
-    left: 24px;
-    right: 24px;
-    bottom: 24px;
+    width: min-content;
+    height: 2.375rem;
+    column-gap: 0.5rem;
+    justify-content: center;
     display: flex;
-    justify-content: space-between;
-    position: absolute;
 }
 
 .story-activity .legend li{
-    width: 60px;
+    width: 3.75rem;
     height: 100%;
-    margin-left: 8px;
     display: inline-block;
-}
-
-.story-activity .legend li:first-child{
-    margin-left: 0;
 }
 
 .story-activity .legend__min_cell,
@@ -96,8 +113,8 @@
 .story-activity .legend__extra_cell,
 .story-activity .legend__step{
     width: 100%;
-    height: 12px;
-    border-radius: 2px;
+    height: 0.75rem;
+    border-radius: 0.125rem;
 }
 
 .story-activity .legend__min_cell{
@@ -121,10 +138,10 @@
 }
 
 .story-activity .legend__step{
-    width: calc(100% - 8px);
-    height: 4px;
-    margin: 4px;
-    margin-bottom: 12px;
+    width: calc(100% - 0.5rem);
+    height: 0.25rem;
+    margin: 0.25rem;
+    margin-bottom: 0.75rem;
     background: var(--cell-legend-step-horizontal-background);
     box-shadow: var(--cell-legend-step-horizontal-shadow);
     position: relative;
@@ -133,174 +150,131 @@
 .story-activity .legend__step::before,
 .story-activity .legend__step::after{
     content: '';
-    width: 4px;
-    height: 12px;
-    top: -4px;
-    left: -4px;
+    width: 0.25rem;
+    height: 0.75rem;
+    top: -0.25rem;
+    left: -0.25rem;
     background: var(--cell-legend-step-verticals-background);
     box-shadow: var(--cell-legend-step-verticals-shadow);
-    border-radius: 2px;
+    border-radius: 0.125rem;
     display: block;
     position: absolute;
 }
 
 .story-activity .legend__step::after{
     left: auto;
-    right: -4px;
+    right: -0.25rem;
 }
 
-.story-activity .legend img{
-    width: 100%;
-    user-select: none;
-    -webkit-user-drag: none;
-}
-
-.story-activity .legend h2{
-    margin-top: 8px;
+.story-activity .legend h3{
+    color: var(--text-color-sub);
+    margin-top: 0.5rem;
+    text-align: center;
 }
 
 @media screen and (orientation:landscape) {
-    .story-activity{
-        --cell-height: min(
-            calc((var(--story-height) - 176px) * 0.17),
-            calc((var(--story-width) - 48px) * 0.0685)
-        );
-        --cell-width: var(--cell-height);
-    }
-
-    .story-activity .legend {
-        max-width: 332px;
-        bottom: 58px;
-    }
-
-    .story-activity .legend h2 {
-        text-align: center;
-    }
-
-    .story-activity .grid {
-        width: calc(var(--cell-height) * 12.5);
-        top: calc(var(--story-height) / 2);
-    }
-
-    .story-activity .row{
-        width: var(--cell-width);
-        height: calc(var(--cell-height) * 4 * 0.765);
-        display: inline-block;
-    }
-    
-    .story-activity .row:nth-child(even){
-        display: none;
-    }
-
-    .story-activity .cell:first-child{
-        margin-top: 0;
-    }
-
-    .story-activity .cell {
-        margin-top: calc(var(--cell-height) * -0.615);
-    }
-
-    .story-activity .cell:nth-child(2n) {
-        margin-left: calc(var(--cell-width) / 2);
-    }
-
-    .story-activity .cell.h-min::before{
-        background-image: var(--cell-3d-min-image);
-    }
-    
-    .story-activity .cell.h-mid::before{
-        background-image: var(--cell-3d-mid-image);
-    }
-    
-    .story-activity .cell.h-max::before{
-        background-image: var(--cell-3d-max-image);
-    }
-    
-    .story-activity .cell.h-extra::before{
-        background-image: var(--cell-3d-extra-image);
-    }
-    
     /* Меняем порядок наложение столбцов с слева-направо на сверху-вниз */
-    .story-activity .cell:nth-child(1) {
+    .story-activity .cell[weekday="1"] {
         z-index: 1;
     }
-    .story-activity .cell:nth-child(2) {
+    .story-activity .cell[weekday="2"] {
         z-index: 2;
     }
-    .story-activity .cell:nth-child(3) {
+    .story-activity .cell[weekday="3"] {
         z-index: 3;
     }
-    .story-activity .cell:nth-child(4) {
+    .story-activity .cell[weekday="4"] {
         z-index: 4;
     }
-    .story-activity .cell:nth-child(5) {
+    .story-activity .cell[weekday="5"] {
         z-index: 5;
     }
-    .story-activity .cell:nth-child(6) {
+    .story-activity .cell[weekday="6"] {
         z-index: 6;
     }
-    .story-activity .cell:nth-child(7) {
+    .story-activity .cell[weekday="7"] {
         z-index: 7;
     }
 }
 
-@media screen and (orientation:landscape) and (min-width: 900px){
-    /* Activity */
+@media screen and (orientation:portrait) {
     .story-activity{
-        --cell-height: min(
-            calc((var(--story-height) - 176px) * 0.13),
-            calc((var(--story-width) - 48px) * 0.0685)
+        --cell-width: min(
+            calc((var(--story-height) - 3rem) / 12.5),
+            calc((var(--story-width) - 3rem) / 7.5)
         );
-        --cell-width: var(--cell-height);
+        --cell-height: calc(var(--cell-width) * 0.767);
     }
-}
 
-@media screen and (orientation:portrait) and (min-width: 750px){
-    /* Activity */
-    .story-activity{
-        --cell-width: calc((var(--story-width) - 72px) / 7.5 * 0.9);
-        --cell-height: var(--cell-width);
+    .story-activity header .title {
+        max-height: 2rem;
+        white-space: nowrap;
+        text-overflow: ellipsis;
     }
-}
+    
+    .story-activity main{
+        justify-content: flex-end;
+        row-gap: 0.4rem;
+    }
+    
+    .story-activity .grid{
+        width: min-content;
+        height: auto;
+        flex: 1;
+        padding-top: 0;
+        padding-right: calc(var(--cell-width) / 2);
+        grid-template-columns: repeat(7, var(--cell-width));
+        grid-template-rows: repeat(12, var(--cell-height) 0);
+        grid-auto-flow: row;
+        align-content: center;
+    }
 
-@media screen and (orientation:landscape) and (min-width: 900px),
-       screen and (orientation:portrait) and (min-width: 750px) {
+    /* Отмена смещения для горизонатльной ориентации */
+    .story-activity .cell[weekday="2"],
+    .story-activity .cell[weekday="4"],
+    .story-activity .cell[weekday="6"]{
+        transform: none;
+    }
+    
+    /* Показываем, поднимаем и сдвигаем на пол клетки чётные столбики */
+    .story-activity .cell[hour="2"],
+    .story-activity .cell[hour="4"],
+    .story-activity .cell[hour="6"],
+    .story-activity .cell[hour="8"],
+    .story-activity .cell[hour="10"],
+    .story-activity .cell[hour="12"],
+    .story-activity .cell[hour="14"],
+    .story-activity .cell[hour="16"],
+    .story-activity .cell[hour="18"],
+    .story-activity .cell[hour="20"],
+    .story-activity .cell[hour="22"],
+    .story-activity .cell[hour="24"]{
+        transform: translateX(calc(var(--cell-width) / 2))
+                   translateY(calc(var(--cell-height) / -2));
+        display: block;
+    }
+
+    .story-activity .cell.v-min::before{
+        background-image: var(--cell-3d-min-image);
+    }
+    
+    .story-activity .cell.v-mid::before{
+        background-image: var(--cell-3d-mid-image);
+    }
+    
+    .story-activity .cell.v-max::before{
+        background-image: var(--cell-3d-max-image);
+    }
+    
+    .story-activity .cell.v-extra::before{
+        background-image: var(--cell-3d-extra-image);
+    }
+
     .story-activity .legend {
-        max-width: 498px;
-        bottom: 56px;
+        margin-bottom: 1.5rem;
     }
 
-    .story-activity .legend li {
-        width: 90px;
-    }
-
-    .story-activity .legend__min_cell,
-    .story-activity .legend__mid_cell,
-    .story-activity .legend__max_cell,
-    .story-activity .legend__extra_cell,
-    .story-activity .legend__step {
-        height: 18px;
-        border-radius: 3px;
-    }
-
-    .story-activity .legend__step {
-        width: calc(100% - 12px);
-        height: 6px;
-        margin: 6px;
-        margin-bottom: 12px;
-    }
-
-    .story-activity .legend__step::before,
-    .story-activity .legend__step::after {
-        width: 6px;
-        height: 18px;
-        top: -6px;
-        left: -6px;
-        border-radius: 3px;
-    }
-
-    .story-activity .legend__step::after {
-        left: auto;
-        right: -6px;
+    .story-activity .legend h3{
+        text-align: left;
     }
 }

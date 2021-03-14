@@ -773,6 +773,10 @@ function renderDiagram(data){
     const filter_expansion = 50; // Процент расширения Bounding Box
     const diagram_appearance = {
         "settings": {
+            "background_color": {
+                "dark": [17, 15, 11],
+                "light": [255, 255, 255]
+            },
             "shadow": {
                 "spread_radius": 8,
                 "blur_radius": 20
@@ -783,23 +787,24 @@ function renderDiagram(data){
             "inset_light": {
                 "x_offset": -1,
                 "y_offset": 1,
-                "blur_radius": 1
+                "blur_radius": 1.5
             }
         },
         "colors": {
             "dark": [
                 {
                     "gradient": [
-                        [0.7188, "rgba(255, 163, 0, 0.8)"],
-                        [1, "rgba(58, 54, 47, 0.8)"]
+                        [0.7, [255, 163, 0], 1],
+                        [1, [116, 74, 0], 1]
                     ],
                     "shadow": {
                         "color": "rgb(248, 158, 0)",
-                        "opacity": 0.2
+                        "opacity": 0.1
                     },
                     "inset_shadow": {
                         "color": "rgb(255, 162, 0)",
-                        "opacity": 0.9
+                        "opacity": 0.9,
+                        "offset": -4
                     },
                     "inset_light": {
                         "color": "rgb(255, 255, 255)",
@@ -808,8 +813,8 @@ function renderDiagram(data){
                 },
                 {
                     "gradient": [
-                        [0.7292, "rgba(99, 63, 0, 0.5)"],
-                        [1, "rgba(15, 9, 0, 0.5)"]
+                        [0.7292, [99, 63, 0], 0.1],
+                        [1, [15, 9, 0], 0.1]
                     ],
                     "shadow": {
                         "color": "rgb(147, 93, 0)",
@@ -817,7 +822,8 @@ function renderDiagram(data){
                     },
                     "inset_shadow": {
                         "color": "rgb(202, 129, 0)",
-                        "opacity": 0.9
+                        "opacity": 0.9,
+                        "offset": 0
                     },
                     "inset_light": {
                         "color": "rgb(255, 255, 255)",
@@ -826,8 +832,8 @@ function renderDiagram(data){
                 },
                 {
                     "gradient": [
-                        [0.7188, "rgba(155, 155, 155, 0.5)"],
-                        [1, "rgba(56, 41, 0, 0.5)"]
+                        [0.7188, [155, 155, 155], 0.75],
+                        [1, [56, 41, 0], 0.75]
                     ],
                     "shadow": {
                         "color": "rgb(0, 0, 0)",
@@ -835,7 +841,8 @@ function renderDiagram(data){
                     },
                     "inset_shadow": {
                         "color": "rgb(139, 139, 139)",
-                        "opacity": 0.9
+                        "opacity": 0.9,
+                        "offset": 0
                     },
                     "inset_light": {
                         "color": "rgb(255, 255, 255)",
@@ -844,8 +851,8 @@ function renderDiagram(data){
                 },
                 {
                     "gradient": [
-                        [0.7188, "rgba(77, 77, 77, 0.5)"],
-                        [1, "rgba(56, 41, 0, 0.5)"]
+                        [0.7188, [77, 77, 77], 1],
+                        [1, [56, 41, 0], 1]
                     ],
                     "shadow": {
                         "color": "rgb(96, 96, 96)",
@@ -853,7 +860,8 @@ function renderDiagram(data){
                     },
                     "inset_shadow": {
                         "color": "rgb(38, 38, 38)",
-                        "opacity": 0.9
+                        "opacity": 0.9,
+                        "offset": 0
                     },
                     "inset_light": {
                         "color": "rgb(255, 255, 255)",
@@ -864,8 +872,8 @@ function renderDiagram(data){
             "light": [
                 {
                     "gradient": [
-                        [0.8125, "rgba(255, 184, 0, 0.56)"],
-                        [1, "rgba(255, 239, 153, 0.32)"]
+                        [0.8125, [255, 184, 0], 0.9],
+                        [1, [255, 239, 153], 0.1]
                     ],
                     "shadow": {
                         "color": "rgb(255, 255, 255)",
@@ -873,7 +881,8 @@ function renderDiagram(data){
                     },
                     "inset_shadow": {
                         "color": "rgb(255, 176, 57)",
-                        "opacity": 0.9
+                        "opacity": 0.7,
+                        "offset": -2
                     },
                     "inset_light": {
                         "color": "rgb(255, 255, 255)",
@@ -882,8 +891,8 @@ function renderDiagram(data){
                 },
                 {
                     "gradient": [
-                        [0.8125, "rgba(255, 184, 0, 0.24)"],
-                        [1, "rgba(255, 239, 153, 0.12)"]
+                        [0.8125, [255, 184, 0], 0.5],
+                        [1, [255, 239, 153], 0.1]
                     ],
                     "shadow": {
                         "color": "rgb(255, 255, 255)",
@@ -891,7 +900,8 @@ function renderDiagram(data){
                     },
                     "inset_shadow": {
                         "color": "rgb(255, 176, 57)",
-                        "opacity": 0.4
+                        "opacity": 0.4,
+                        "offset": 0
                     },
                     "inset_light": {
                         "color": "rgb(255, 255, 255)",
@@ -900,16 +910,17 @@ function renderDiagram(data){
                 },
                 {
                     "gradient": [
-                        [0.8281, "rgba(166, 166, 166, 0.1725)"],
-                        [0.9219, "rgba(203, 203, 203, 0.05)"]
+                        [0.8281, [166, 166, 166], 0.25],
+                        [0.9219, [203, 203, 203], 0.05]
                     ],
                     "shadow": {
                         "color": "rgb(255, 255, 255)",
                         "opacity": 0
                     },
                     "inset_shadow": {
-                        "color": "rgba(105, 105, 105)",
-                        "opacity": 0.2
+                        "color": "rgb(105, 105, 105)",
+                        "opacity": 0.2,
+                        "offset": 0
                     },
                     "inset_light": {
                         "color": "rgb(255, 255, 255)",
@@ -918,8 +929,8 @@ function renderDiagram(data){
                 },
                 {
                     "gradient": [
-                        [0.8281, "rgba(191, 191, 191, 0.345)"],
-                        [0.9219, "rgba(228, 228, 228, 0.1)"]
+                        [0.8281, [191, 191, 191], 0.8],
+                        [0.9219, [228, 228, 228], 0.1]
                     ],
                     "shadow": {
                         "color": "rgb(255, 255, 255)",
@@ -927,7 +938,8 @@ function renderDiagram(data){
                     },
                     "inset_shadow": {
                         "color": "rgb(131, 131, 131)",
-                        "opacity": 0.6
+                        "opacity": 0.5,
+                        "offset": 0
                     },
                     "inset_light": {
                         "color": "rgb(255, 255, 255)",
@@ -942,13 +954,20 @@ function renderDiagram(data){
         let theme = Object.keys(diagram_appearance["colors"])[theme_index];
         
         for(let i = 0; i < diagram_appearance["colors"][theme].length; i++){
-            let shadow_offset_x = -Math.cos(middleDegree[i] / 180 * Math.PI) * diagram_appearance["settings"]["shadow"]["spread_radius"];
-            let shadow_offset_y = -Math.sin(middleDegree[i] / 180 * Math.PI) * diagram_appearance["settings"]["shadow"]["spread_radius"];
+            let offset_x_coeff = -Math.cos(middleDegree[i] / 180 * Math.PI);
+            let offset_y_coeff = -Math.sin(middleDegree[i] / 180 * Math.PI);
 
-            svg_diagram += `<radialGradient id="diagram_gradient_${theme}_${i}" r="${radius * 1.07 + padding}" cx="${radius * 2 * 0.4984 + padding}" cy="${radius * 2 * 0.4984 + padding}" fx="${radius * 2 * 0.4984 + padding}" fy="${radius * 2 * 0.5016 + padding}" gradientUnits="userSpaceOnUse">`;
+            svg_diagram += `<radialGradient id="diagram_gradient_${theme}_${i}" spreadMethod="pad" cx="${radius * 2 * 0.4984 + padding}" cy="${radius * 2 * 0.4984 + padding}" fx="${radius * 2 * 0.4984 + padding}" fy="${radius * 2 * 0.5016 + padding}" gradientUnits="userSpaceOnUse">`;
 
             for(let j = 0; j < diagram_appearance["colors"][theme][i]["gradient"].length; j++){
-                svg_diagram += `<stop offset="${diagram_appearance["colors"][theme][i]["gradient"][j][0]}" stop-color="${diagram_appearance["colors"][theme][i]["gradient"][j][1]}"/>`;
+                let rgb_color = diagram_appearance["colors"][theme][i]["gradient"][j][1];
+                let rgb_opacity = diagram_appearance["colors"][theme][i]["gradient"][j][2];
+                rgb_color[0] = diagram_appearance["settings"]["background_color"][theme][0] * (1 - rgb_opacity) + rgb_color[0] * rgb_opacity;
+                rgb_color[1] = diagram_appearance["settings"]["background_color"][theme][1] * (1 - rgb_opacity) + rgb_color[1] * rgb_opacity;
+                rgb_color[2] = diagram_appearance["settings"]["background_color"][theme][2] * (1 - rgb_opacity) + rgb_color[2] * rgb_opacity;
+                rgb_color = `rgb(${rgb_color[0]}, ${rgb_color[1]}, ${rgb_color[2]})`;
+
+                svg_diagram += `<stop offset="${diagram_appearance["colors"][theme][i]["gradient"][j][0]}" stop-color="${rgb_color}"/>`;
             }
 
             svg_diagram += `</radialGradient>`;
@@ -956,13 +975,14 @@ function renderDiagram(data){
             svg_diagram += `<filter id="diagram_filter_${theme}_${i}" x="${-filter_expansion}%" y="${-filter_expansion}%" width="${100 + filter_expansion * 2}%" height="${100 + filter_expansion * 2}%">
                                 <feColorMatrix in="SourceAlpha" result="diagram_mask" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 4 0"/>
 
-                                <feOffset in="diagram_mask" result="moved_mask" dx="${shadow_offset_x}" dy="${shadow_offset_y}"></feOffset>
+                                <feOffset in="diagram_mask" result="moved_mask" dx="${offset_x_coeff * diagram_appearance["settings"]["shadow"]["spread_radius"]}" dy="${offset_y_coeff * diagram_appearance["settings"]["shadow"]["spread_radius"]}"></feOffset>
                                 <feGaussianBlur in="moved_mask" result="blurred_mask" stdDeviation="${diagram_appearance["settings"]["shadow"]["blur_radius"] / 2}"/>
                                 <feMorphology in="blurred_mask" result="eroded_mask" operator="erode" radius="${diagram_appearance["settings"]["shadow"]["spread_radius"] / 2}"/>
                                 <feFlood flood-color="${diagram_appearance["colors"][theme][i]["shadow"]["color"]}" flood-opacity="${diagram_appearance["colors"][theme][i]["shadow"]["opacity"]}" result="shadow_color"></feFlood>
                                 <feComposite in="shadow_color" in2="eroded_mask" operator="in" result="shadow"></feComposite>
 
-                                <feColorMatrix type="matrix" in="diagram_mask" result="inverted_mask"
+                                <feOffset in="diagram_mask" result="moved_mask" dx="${offset_x_coeff * diagram_appearance["colors"][theme][i]["inset_shadow"]["offset"]}" dy="${offset_y_coeff * diagram_appearance["colors"][theme][i]["inset_shadow"]["offset"]}"></feOffset>
+                                <feColorMatrix type="matrix" in="moved_mask" result="inverted_mask"
                                     values="1 0 0 0 0 
                                             0 1 0 0 0 
                                             0 0 1 0 0

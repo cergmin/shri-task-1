@@ -455,14 +455,7 @@ webpackContext.id = 164;
 /***/ (() => {
 
 function renderLeaders(data){
-    let layout = "";
-    
-    layout += `<header>
-                   <h1 class="title">${data["title"]}</h1>
-                   <h3 class="subtitle">${data["subtitle"]}</h3>
-               </header>`;
-    
-    layout += '<div class="leaders_list">';
+    let layout = '<div class="leaders_list">';
 
     selectedUserIndex = undefined;
     if(data["selectedUserId"] !== undefined){
@@ -529,10 +522,6 @@ function renderVote(data, offset=0){
     let canGoBack = (offset == 0);
     let canGoFurther = (offset >= data["users"].length - 8);
 
-    layout += `<header>
-                   <h1 class="title">${data["title"]}</h1>
-                   <h3 class="subtitle">${data["subtitle"]}</h3>
-               </header>`;
     layout += `<div class="grid">
                    <button class="back_button" type="button" ${canGoBack ? "disabled" : ""} data-action="update" data-params='${backButtonDataParams}'></button>`;
     
@@ -569,13 +558,7 @@ function renderVote(data, offset=0){
 }
 
 function renderChart(data){
-    let layout = "";
-    
-    layout += `<header>
-                   <h1 class="title">${data["title"]}</h1>
-                   <h3 class="subtitle">${data["subtitle"]}</h3>
-               </header>`;
-    layout += `<div class="columns">`;
+    let layout = `<div class="columns">`;
 
     let maxValue = data["values"][0]["value"];
     let activeColumnIndex = data["values"].length - 1;
@@ -1022,11 +1005,7 @@ function renderDiagram(data){
     svg_diagram += `</svg>`;
 
     // Рендерим слайд
-    layout += `<header>
-                   <h1 class="title">${data["title"]}</h1>
-                   <h3 class="subtitle">${data["subtitle"]}</h3>
-               </header>
-               <main>
+    layout += `<main>
                    ${svg_diagram}
                    <div class="diagram_text">
                        <h2 class="total">${data["totalText"]}</h2>
@@ -1077,10 +1056,6 @@ function renderActivity(data){
     ranges[3][1] = maxValue;
 
     // Рендерим слайд
-    layout += `<header>
-                   <h1 class="title">${data["title"]}</h1>
-                   <h3 class="subtitle">${data["subtitle"]}</h3>
-               </header>`;
     layout += `<main>
                    <div class="grid">`;
 
@@ -1156,7 +1131,11 @@ function renderActivity(data){
 function renderTemplate(alias, data){
     alias = alias.toLowerCase();
 
-    let layout = `<div class="story-${alias}">`; 
+    let layout = `<div class="story-${alias}">
+                      <header>
+                          <h1 class="title">${data["title"]}</h1>
+                          <h3 class="subtitle">${data["subtitle"]}</h3>
+                      </header>`; 
 
     if(alias === "leaders"){
         layout += renderLeaders(data);

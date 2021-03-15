@@ -81,13 +81,20 @@ function renderVote(data, offset=0){
                    <button class="back_button" type="button" ${canGoBack ? "disabled" : ""} data-action="update" data-params='${backButtonDataParams}'></button>`;
     
     for(let i = offset; i < Math.min(data["users"].length, offset + 8); i++){
+        let userButtonDataParams = JSON.stringify({
+            alias: 'leaders',
+            data: {
+                selectedUserId: data["users"][i]["id"]
+            }
+        });
+
         isSelected = (data["selectedUserId"] == data["users"][i]["id"]);
         
         if(isSelected){
             layout += `<button class="user selected" type="button" disabled>`;
         }
         else{
-            layout += `<button class="user" type="button" data-action="update">`;
+            layout += `<button class="user" type="button" data-action="update" data-params='${userButtonDataParams}'>`;
         }
 
         layout += `<img src="./images/${data["users"][i]["avatar"]}" class="avatar">`;
@@ -699,7 +706,13 @@ function renderTemplate(alias, data){
         layout += renderLeaders(data);
     }
     else if(alias === "vote"){
-        layout += renderVote(data);
+        let offset = 0;
+
+        if(data.hasOwnProperty("offset")){
+            offset = data["offset"];
+        }
+
+        layout += renderVote(data, offset);
     }
     else if(alias === "chart"){
         layout += renderChart(data);

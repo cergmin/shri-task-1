@@ -4,7 +4,7 @@
 }
 
 :root{
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .hide{
@@ -115,5 +115,69 @@ header{
     .title,
     .subtitle{
         text-align: left;
+    }
+}
+
+@media screen and (orientation:portrait) {
+    @media (min-width: 360px) and (min-height: 580px){
+        :root{
+            font-size: 16px;
+        }
+    }
+
+    @media (min-width: 440px) and (min-height: 800px){
+        :root{
+            font-size: 20px;
+        }
+    }
+
+    @media (min-width: 520px) and (min-height: 900px){
+        :root{
+            font-size: 22px;
+        }
+    }
+
+    @media (min-width: 780px) and (min-height: 1100px){
+        :root{
+            font-size: 26px;
+        }
+    }
+}
+
+@media screen and (orientation:landscape) {
+    @media (min-width: 640px) and (min-height: 320px){
+        :root{
+            font-size: 16px;
+        }
+    }
+
+    @media (min-width: 700px) and (min-height: 400px){
+        :root{
+            font-size: 18px;
+        }
+    }
+
+    @media (min-width: 940px) and (min-height: 520px){
+        :root{
+            font-size: 20px;
+        }
+    }
+
+    @media (min-width: 1100px) and (min-height: 560px){
+        :root{
+            font-size: 22px;
+        }
+    }
+
+    @media (min-width: 1200px) and (min-height: 650px){
+        :root{
+            font-size: 24px;
+        }
+    }
+
+    @media (min-width: 1350px) and (min-height: 650px){
+        :root{
+            font-size: 26px;
+        }
     }
 }

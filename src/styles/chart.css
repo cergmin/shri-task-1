@@ -1,8 +1,8 @@
 .story-chart .columns{
     width: fit-content;
-    margin: 33px auto 24px;
-    padding: 0 58px;
-    column-gap: 24px;
+    margin: 2.0625rem auto 1.5rem;
+    padding: 0 3.625rem;
+    column-gap: calc(12px + 0.75rem);
     flex: 1;
     flex-wrap: wrap;
     flex-direction: row-reverse;
@@ -13,7 +13,7 @@
 }
 
 .story-chart .column{
-    width: 40px;
+    width: calc(20px + 1.25rem);
     height: 100%;
     display: inline-flex;
     flex-direction: column;
@@ -22,11 +22,11 @@
 
 .story-chart .column_box{
     background: var(--box-min-background);
-    width: 40px;
-    height: calc(100% - 20px - 2.5rem);
-    min-height: 8px;
-    margin-top: 8px;
-    margin-bottom: 12px;
+    width: calc(20px + 1.25rem);
+    height: calc(100% - 1.25rem - 2.5rem);
+    min-height: 0.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.75rem;
     border-radius: 6px;
     box-shadow: var(--box-min-shadow);
 }
@@ -51,28 +51,28 @@
 
 .story-chart .leaders{
     width: auto;
-    height: 40px;
-    margin: 0 58px 24px;
-    column-gap: 16px;
+    height: 2.5rem;
+    margin: 0 3.625rem 1.5rem;
+    column-gap: calc(8px + 0.5rem);
     justify-content: center;
     display: flex;
     position: relative;
 }
 
 .story-chart .leader{
-    width: 220px;
-    height: 40px;
+    width: 14.75rem;
+    height: 2.5rem;
 }
 
 .story-chart .leader_avatar{
     height: 100%;
-    margin-right: 14px;
+    margin-right: 0.875rem;
     filter: grayscale(var(--grayscale-coeff));
     border-radius: 100%;
 }
 
 .story-chart .leader_text_block{
-    width: calc(100% - 54px);
+    width: calc(100% - 3.375rem);
     float: right;
     display: inline-block;
 }
@@ -86,7 +86,7 @@
 }
 
 .story-chart .leader_name{
-    margin: 1px 0 5px;
+    margin: 0.0625rem 0 0.3125rem;
 }
 
 .story-chart .leader_score{
@@ -102,17 +102,17 @@
 @media screen and (orientation:portrait) {
     .story-chart .columns {
         width: auto;
-        margin: 98px 24px 0 -8px;
+        margin: 6.125rem 1.5rem 0 -0.5rem;
         padding: 0;
     }
 
     .story-chart .leaders{
         width: auto;
-        height: 162px;
-        margin: 0 24px;
+        height: 10.125rem;
+        margin: 0 1.5rem;
         flex-direction: column;
         column-gap: 0;
-        row-gap: 16px;
+        row-gap: calc(8px + 0.5rem);
     }
     
     .story-chart .leader{
@@ -121,13 +121,13 @@
     
     .story-chart .leader_avatar{
         height: 100%;
-        margin-right: 14px;
+        margin-right: 0.875rem;
         filter: grayscale(var(--grayscale-coeff));
         border-radius: 100%;
     }
     
     .story-chart .leader_text_block{
-        width: calc(100% - 54px);
+        width: calc(100% - 3.375rem);
         float: right;
         display: inline-block;
     }
@@ -141,7 +141,7 @@
     }
     
     .story-chart .leader_name{
-        margin: 1px 0 5px;
+        margin: 0.0625rem 0 0.3125rem;
     }
     
     .story-chart .leader_score{

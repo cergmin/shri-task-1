@@ -6,12 +6,14 @@
 
         min(
             {высота истории} - 2 * {padding сверху/снизу} - {высота хедера},
-            {ширина истории} - 2 * {padding слева/справа} - {column-gap} - {ширина блока категорий}
+            {ширина истории} - 2 * {padding слева/справа} - {column-gap} - {ширина блока категорий},
+            19rem
         )
     */
     --diagram-size: min(
         calc(var(--story-height) - 2 * 1.8125rem - 4.875rem),
-        calc(var(--story-width) - 2 * 2.625rem - 2.5rem - 19rem)
+        calc(var(--story-width) - 2 * 2.625rem - 2.5rem - 19rem),
+        19rem
     );
 
     width: 100%;

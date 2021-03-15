@@ -206,7 +206,7 @@ function renderDiagram(data){
     const radius = 284 / 2;
     const roundingRadius = 6;
     const innerRadiusK = 0.7;
-    const marginDeg = 1.2;
+    const marginDeg = 1.5;
 
     // Нужен для правильного смещения тени к центру в svg фильтре
     let middleDegree = [];
@@ -397,12 +397,12 @@ function renderDiagram(data){
                 },
                 {
                     "gradient": [
-                        [0.7188, [77, 77, 77], 1],
+                        [0.6, [77, 77, 77], 1],
                         [1, [56, 41, 0], 1]
                     ],
                     "shadow": {
                         "color": "rgb(96, 96, 96)",
-                        "opacity": 0.2
+                        "opacity": 0.15
                     },
                     "inset_shadow": {
                         "color": "rgb(38, 38, 38)",

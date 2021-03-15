@@ -1,16 +1,23 @@
 .story-diagram main{
-    /* Высот и ширина диаграммы */
-    /* Первый аргумент min - максимально допустимая высота диаграммы */
-    /* Второй аргумент min - максимально допустимая ширина диаграммы */
+    /*
+        Высот и ширина диаграммы
+        Первый аргумент min - максимально допустимая высота диаграммы
+        Второй аргумент min - максимально допустимая ширина диаграммы
+
+        min(
+            {высота истории} - 2 * {padding сверху/снизу} - {высота хедера},
+            {ширина истории} - 2 * {padding слева/справа} - {column-gap} - {ширина блока категорий}
+        )
+    */
     --diagram-size: min(
-        calc(var(--story-height) - 20px - 60px - 8px - 3.125rem),
-        calc(var(--story-width) - 84px - 42px - 19rem)
+        calc(var(--story-height) - 2 * 1.8125rem - 4.875rem),
+        calc(var(--story-width) - 2 * 2.625rem - 2.5rem - 19rem)
     );
 
     width: 100%;
     height: 0;
     flex: 1;
-    padding: 30px 42px;
+    padding: 1.8125rem 2.625rem;
     align-self: center;
     align-items: center;
     justify-content: center;
@@ -18,7 +25,7 @@
     justify-self: center;
     grid-template-columns: var(--diagram-size) 19rem;
     grid-template-rows: var(--diagram-size);
-    column-gap: 42px;
+    column-gap: 2.5rem;
     display: grid;
     box-sizing: border-box;
 }

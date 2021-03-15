@@ -144,6 +144,7 @@
     margin-bottom: 0.75rem;
     background: var(--cell-legend-step-horizontal-background);
     box-shadow: var(--cell-legend-step-horizontal-shadow);
+    border-radius: 0;
     position: relative;
 }
 
@@ -203,7 +204,7 @@
             calc((var(--story-height) - 3rem) / 12.5),
             calc((var(--story-width) - 3rem) / 7.5)
         );
-        --cell-height: calc(var(--cell-width) * 0.767);
+        --cell-height: calc(var(--cell-width) * 0.765);
     }
 
     .story-activity header .title {
@@ -272,6 +273,10 @@
 
     .story-activity .legend {
         margin-bottom: 1.5rem;
+    }
+
+    .story-activity .legend li{
+        width: 3.7rem;
     }
 
     .story-activity .legend h3{

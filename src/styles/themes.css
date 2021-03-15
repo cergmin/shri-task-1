@@ -113,10 +113,10 @@ body.theme_light .story-diagram{
 
 .story-activity,
 body.theme_dark .story-activity{    
-    --cell-3d-min-image: url("../images/min-dark.svg");
-    --cell-3d-mid-image: url("../images/mid-dark.svg");
-    --cell-3d-max-image: url("../images/max-dark.svg");
-    --cell-3d-extra-image: url("../images/extra-dark.svg");
+    --cell-3d-min-image: url("../images/min-dark.png");
+    --cell-3d-mid-image: url("../images/mid-dark.png");
+    --cell-3d-max-image: url("../images/max-dark.png");
+    --cell-3d-extra-image: url("../images/extra-dark.png");
 
     --cell-legend-min-background: radial-gradient(
         3906.1% 3815.36% at 89.06% 78.28%,

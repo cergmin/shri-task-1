@@ -659,7 +659,9 @@ function renderDiagram(data){
 
     let svg_diagram = `<svg class="svg_diagram" width="130" height="130" shape-rendering="geometricPrecision" viewBox="0 0 ${(radius + padding) * 2} ${(radius + padding) * 2}" fill="none" xmlns="http://www.w3.org/2000/svg">`;
 
+    // Центрирование первого сегмента
     let lastEndDeg = 270 - ((360 - marginDeg * categories.length) * categories[0]["percentage"]) / 2 - marginDeg;
+
     for(let i = 0; i < categories.length; i++){
         let startDeg = lastEndDeg + marginDeg;
         let endDeg = startDeg + (360 - marginDeg * categories.length) * categories[i]["percentage"];

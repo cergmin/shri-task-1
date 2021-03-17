@@ -55,7 +55,7 @@
     display: none;
 }
 
-/* Поднимаем и сдвигаем на пол клетки столбики чётных рядов */
+/* Поднимаем и сдвигаем на полклетки столбики чётных рядов */
 .story-activity .cell[weekday="2"],
 .story-activity .cell[weekday="4"],
 .story-activity .cell[weekday="6"]{
@@ -237,7 +237,7 @@
         transform: none;
     }
     
-    /* Показываем, поднимаем и сдвигаем на пол клетки чётные столбики */
+    /* Показываем, поднимаем и сдвигаем на полклетки чётные столбики */
     .story-activity .cell[hour="2"],
     .story-activity .cell[hour="4"],
     .story-activity .cell[hour="6"],

@@ -515,12 +515,12 @@ function renderVote(data, offset=0){
     let nextButtonDataParams = JSON.stringify({
         alias: 'vote',
         data: {
-            offset: Math.min(data["users"].length - 8, offset + 6)
+            offset: Math.min(data["users"].length - 6, offset + 6)
         }
     });
 
     let canGoBack = (offset == 0);
-    let canGoFurther = (offset >= data["users"].length - 8);
+    let canGoFurther = (offset >= data["users"].length - 6);
 
     layout += `<div class="grid">
                    <button class="back_button" type="button" ${canGoBack ? "disabled" : ""} data-action="update" data-params='${backButtonDataParams}'></button>`;

@@ -645,8 +645,6 @@ function renderDiagram(data){
         categories[i]["percentage"] = categories[i]["value"] / totalValue;
     }
 
-    console.log(categories);
-
     // Рендерим svg диаграмму
     const padding = 0;
     const radius = 284 / 2;

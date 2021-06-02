@@ -1,3 +1,16 @@
+# Демо
+leaders-1 ([light](https://cergmin.github.io/shri-task-1?slide=1&theme=light) | [dark](https://cergmin.github.io/shri-task-1?slide=1&theme=dark))  
+leaders-2 ([light](https://cergmin.github.io/shri-task-1?slide=2&theme=light) | [dark](https://cergmin.github.io/shri-task-1?slide=2&theme=dark))  
+vote-1 ([light](https://cergmin.github.io/shri-task-1?slide=3&theme=light) | [dark](https://cergmin.github.io/shri-task-1?slide=3&theme=dark))  
+leaders-3 ([light](https://cergmin.github.io/shri-task-1?slide=4&theme=light) | [dark](https://cergmin.github.io/shri-task-1?slide=4&theme=dark))  
+vote-2 ([light](https://cergmin.github.io/shri-task-1?slide=5&theme=light) | [dark](https://cergmin.github.io/shri-task-1?slide=5&theme=dark))  
+leaders-4 ([light](https://cergmin.github.io/shri-task-1?slide=6&theme=light) | [dark](https://cergmin.github.io/shri-task-1?slide=6&theme=dark))  
+chart-1 ([light](https://cergmin.github.io/shri-task-1?slide=7&theme=light) | [dark](https://cergmin.github.io/shri-task-1?slide=7&theme=dark))  
+chart-2 ([light](https://cergmin.github.io/shri-task-1?slide=8&theme=light) | [dark](https://cergmin.github.io/shri-task-1?slide=8&theme=dark))  
+diagram ([light](https://cergmin.github.io/shri-task-1?slide=9&theme=light) | [dark](https://cergmin.github.io/shri-task-1?slide=9&theme=dark))  
+activity-1 ([light](https://cergmin.github.io/shri-task-1?slide=10&theme=light) | [dark](https://cergmin.github.io/shri-task-1?slide=10&theme=dark))  
+activity-2 ([light](https://cergmin.github.io/shri-task-1?slide=11&theme=light) | [dark](https://cergmin.github.io/shri-task-1?slide=11&theme=dark))  
+
 # Структура проекта
 В директории **src** есть файл main.js, к нему подключаются все css и js исходники. В директории **src/styles** лежат файлы стилей для каждого слайда по отдельности (vote.css, chart.css и т. д.), с общими стилями, стилями для подключения шрифтов и переменными с цветами для тем. В директории **src/scripts** лежит файл render.js с функцией renderTemplate.
 Есть директория **build**, в ней лежат собранные с помощью webpack исходники.
